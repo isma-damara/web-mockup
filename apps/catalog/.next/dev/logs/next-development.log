@@ -1,0 +1,2 @@
+[00:00:03.259] Server  LOG     ✓ Ready in 2.7s
+[00:00:03.745] Server  WARN    ⚠ Lockfile was successfully patched, please run "npm install" to ensure @next/swc dependencies are downloaded
