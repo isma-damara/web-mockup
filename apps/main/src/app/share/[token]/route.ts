@@ -3,6 +3,8 @@ import type { NextRequest } from "next/server";
 import {
   ADMIN_COOKIE_NAME,
   CLIENT_COOKIE_NAME,
+  createClientSessionCookieValue,
+  getClientSessionMaxAgeSeconds,
   resolveClientShareToken,
 } from "@/lib/access-control";
 
@@ -29,7 +31,10 @@ export async function GET(request: NextRequest, context: RouteContext) {
   }
 
   const response = NextResponse.redirect(new URL(`/${target.site}`, request.url));
-  response.cookies.set(CLIENT_COOKIE_NAME, token, cookieOptions());
+  response.cookies.set(CLIENT_COOKIE_NAME, await createClientSessionCookieValue(target), {
+    ...cookieOptions(),
+    maxAge: getClientSessionMaxAgeSeconds(target),
+  });
   response.cookies.delete(ADMIN_COOKIE_NAME);
   return response;
 }

@@ -9,16 +9,16 @@ import {
   resolveViewerSessionFromCookies,
 } from "@/lib/access-control";
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (isPublicAccessUtilityPath(pathname)) {
     return NextResponse.next();
   }
 
-  const viewer = resolveViewerSessionFromCookies({
-    adminKey: request.cookies.get(ADMIN_COOKIE_NAME)?.value,
-    clientShareToken: request.cookies.get(CLIENT_COOKIE_NAME)?.value,
+  const viewer = await resolveViewerSessionFromCookies({
+    adminSession: request.cookies.get(ADMIN_COOKIE_NAME)?.value,
+    clientSession: request.cookies.get(CLIENT_COOKIE_NAME)?.value,
   });
 
   if (viewer.role === "admin") {

@@ -3,6 +3,8 @@ import { NextResponse } from "next/server";
 import {
   ADMIN_COOKIE_NAME,
   CLIENT_COOKIE_NAME,
+  createAdminSessionCookieValue,
+  getAdminSessionMaxAgeSeconds,
   isValidAdminKey,
   normalizeInternalPath,
 } from "@/lib/access-control";
@@ -17,7 +19,7 @@ function cookieOptions() {
   };
 }
 
-export function GET(request: NextRequest) {
+export async function GET(request: NextRequest) {
   const key = request.nextUrl.searchParams.get("key");
   const nextPath = normalizeInternalPath(request.nextUrl.searchParams.get("next"));
 
@@ -26,7 +28,14 @@ export function GET(request: NextRequest) {
   }
 
   const response = NextResponse.redirect(new URL(nextPath || "/", request.url));
-  response.cookies.set(ADMIN_COOKIE_NAME, key!, cookieOptions());
+  response.cookies.set(
+    ADMIN_COOKIE_NAME,
+    await createAdminSessionCookieValue(),
+    {
+      ...cookieOptions(),
+      maxAge: getAdminSessionMaxAgeSeconds(),
+    },
+  );
   response.cookies.delete(CLIENT_COOKIE_NAME);
   return response;
 }

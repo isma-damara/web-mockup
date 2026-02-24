@@ -23,9 +23,9 @@ const siteFontVars = {
 
 export default async function MockSiteShell({ slug, children }: MockSiteShellProps) {
   const cookieStore = await cookies();
-  const viewer = resolveViewerSessionFromCookies({
-    adminKey: cookieStore.get(ADMIN_COOKIE_NAME)?.value,
-    clientShareToken: cookieStore.get(CLIENT_COOKIE_NAME)?.value,
+  const viewer = await resolveViewerSessionFromCookies({
+    adminSession: cookieStore.get(ADMIN_COOKIE_NAME)?.value,
+    clientSession: cookieStore.get(CLIENT_COOKIE_NAME)?.value,
   });
   const site = getMockSiteBySlug(slug);
 
