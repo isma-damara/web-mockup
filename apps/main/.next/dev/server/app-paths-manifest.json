@@ -1,3 +1,8 @@
 {
+  "/[site]/page": "app/[site]/page.js",
+  "/catalog/page": "app/catalog/page.js",
+  "/company-profile/page": "app/company-profile/page.js",
+  "/ecommerce/page": "app/ecommerce/page.js",
+  "/government/page": "app/government/page.js",
   "/page": "app/page.js"
 }

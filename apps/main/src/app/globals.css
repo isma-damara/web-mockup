@@ -1,5 +1,9 @@
 @import "tailwindcss";
 @source "../../../../packages/ui";
+@source "../../../../apps/company-profile/src";
+@source "../../../../apps/ecommerce/src";
+@source "../../../../apps/catalog/src";
+@source "../../../../apps/government/src";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 

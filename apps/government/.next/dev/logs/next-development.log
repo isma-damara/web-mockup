@@ -1,3 +1,1 @@
-[00:00:03.118] Server  LOG     ✓ Ready in 2.6s
-[00:00:03.232] Server  WARN    ⚠ Lockfile was successfully patched, please run "npm install" to ensure @next/swc dependencies are downloaded
-[00:00:18.323] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:02.132] Server  LOG     ✓ Ready in 1558ms

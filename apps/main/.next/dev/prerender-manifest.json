@@ -1,11 +1,1 @@
-{
-  "version": 4,
-  "routes": {},
-  "dynamicRoutes": {},
-  "notFoundRoutes": [],
-  "preview": {
-    "previewModeId": "61788cb324edadf22b13a4ed03c6e15e",
-    "previewModeSigningKey": "ca2bd39ce7a5be803f695a562379120cb3b4cd9c85eae1151b5004c75f45eaaf",
-    "previewModeEncryptionKey": "69793a992b282b162aa6c2a24daf67217ee211c3a101477a9abba1670dac7cf8"
-  }
-}
+{"version":4,"routes":{"/company-profile":{},"/ecommerce":{},"/government":{},"/catalog":{}},"dynamicRoutes":{"/[site]":{"dataRoute":null,"dataRouteRegex":null,"fallback":null,"fallbackRevalidate":false,"fallbackSourceRoute":"/[site]","routeRegex":"^\\/([^/]+?)(?:\\/)?$","allowHeader":[]}},"notFoundRoutes":[],"preview":{"previewModeId":"ad9413e5b5f9f288d5d144fce26f8c9d","previewModeSigningKey":"3f36b586e4eeb990ec6802987dc608ebbdf9ee22e98161484277819622dd33f5","previewModeEncryptionKey":"83dc74a9f8f92e21b504a6d95b2bb0c7623df9b155a7f717ec14bb9dea3a1db8"}}

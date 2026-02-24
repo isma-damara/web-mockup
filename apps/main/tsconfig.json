@@ -26,6 +26,9 @@
       "@/*": [
         "./src/*"
       ],
+      "@mock-sites/*": [
+        "../../apps/*/src/app/page.tsx"
+      ],
       "@workspace/ui/*": [
         "../../packages/ui/src/*"
       ],

@@ -1,16 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "NexaTech — Solusi Teknologi Masa Depan",
@@ -40,9 +29,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className="dark">
+    <html lang="id">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
+        className="font-sans antialiased"
+        style={
+          {
+            "--font-geist-sans":
+              "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+            "--font-geist-mono":
+              "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+          } as React.CSSProperties
+        }
       >
         {children}
       </body>
