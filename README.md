@@ -1,20 +1,86 @@
-This repository is an `npm workspaces` + `Turborepo` monorepo with multiple Next.js apps in `apps/*`.
+# Web Mockup Monorepo
 
-## Getting Started
+![Next.js](https://img.shields.io/badge/Next.js-16.x-black)
+![Turborepo](https://img.shields.io/badge/Turborepo-2.x-black)
+![Node](https://img.shields.io/badge/Node-%3E%3D18-339933)
+![License](https://img.shields.io/badge/License-Private-lightgrey)
 
-Install dependencies once from the repo root:
+Monorepo **Next.js + Turborepo** untuk kumpulan mockup website. Fokus utama saat ini ada di **e-commerce** dengan alur cart, checkout, dan help center yang lengkap.
+
+---
+
+## Daftar Isi
+
+- [Ringkasan](#ringkasan)
+- [Struktur Apps](#struktur-apps)
+- [Tech Stack](#tech-stack)
+- [Preview](#preview)
+- [Quick Start](#quick-start)
+- [URL Lokal](#url-lokal-default)
+- [Fitur E-commerce](#fitur-e-commerce-highlight)
+- [Routing E-commerce](#routing-e-commerce)
+- [Help Center](#help-center)
+- [Scripts Utama](#script-utama)
+- [Environment Variables](#environment-variables)
+- [Troubleshooting](#troubleshooting)
+- [Deploy (Vercel)](#deploy-vercel)
+- [Kontribusi](#kontribusi)
+- [Catatan Konten & Layout](#catatan-konten--layout)
+
+---
+
+## Ringkasan
+
+- **Apps** di `apps/*` (Next.js App Router)
+- **Shared packages** di `packages/*`
+- **Turborepo** untuk orkestrasi dev/build
+
+## Struktur Apps
+
+- `apps/main` (`@workspace/main`) - portal / landing
+- `apps/company-profile` (`@workspace/company-profile`)
+- `apps/catalog` (`@workspace/catalog`)
+- `apps/ecommerce` (`@workspace/ecommerce`) - fokus utama
+- `apps/government` (`@workspace/government`)
+
+## Tech Stack
+
+- **Next.js** (App Router)
+- **Turborepo** (task runner)
+- **Tailwind CSS** (styling)
+- **Lucide Icons**
+
+## Preview
+
+> Tambahkan screenshot di folder `docs/` (contoh: `docs/preview-ecommerce.png`).
+
+```
+/docs/preview-ecommerce.png
+/docs/preview-portal.png
+```
+
+Contoh penggunaan di README:
+
+```md
+![E-commerce Preview](docs/preview-ecommerce.png)
+![Portal Preview](docs/preview-portal.png)
+```
+
+## Quick Start
+
+Install dependencies dari root:
 
 ```bash
 npm install
 ```
 
-Run all apps in development (via Turbo):
+Jalankan semua apps (Turbo):
 
 ```bash
 npm run dev
 ```
 
-Or run a single app:
+Jalankan satu app saja:
 
 ```bash
 npm run dev --workspace @workspace/main
@@ -24,55 +90,67 @@ npm run dev --workspace @workspace/ecommerce
 npm run dev --workspace @workspace/government
 ```
 
-## Apps
+## URL Lokal (default)
 
-- `apps/main` (`@workspace/main`)
-- `apps/company-profile` (`@workspace/company-profile`)
-- `apps/catalog` (`@workspace/catalog`)
-- `apps/ecommerce` (`@workspace/ecommerce`)
-- `apps/government` (`@workspace/government`)
+- `apps/main` -> http://localhost:3000
+- `apps/company-profile` -> http://localhost:3001
+- `apps/ecommerce` -> http://localhost:3002
+- `apps/government` -> http://localhost:3003
+- `apps/catalog` -> http://localhost:3004
 
-## Mockup Access (Single Vercel Project)
+## Fitur E-commerce (Highlight)
 
-This repo supports a single Vercel project using `apps/main` as a portal + guarded mockup routes.
+- **Cart & Checkout flow** (page-based)
+- **Size picker** di card produk dan cart
+- **Cart page** dengan update qty + delete item
+- **Checkout page** dengan validasi sederhana
+- **Confirm page** dengan ringkasan pesanan
+- **Help Center** lengkap
 
-Local setup (`apps/main/.env.local`) example:
+## Routing E-commerce
+
+- Home: `/`
+- Cart: `/cart`
+- Checkout: `/checkout`
+- Confirm: `/checkout/confirm`
+
+## Help Center
+
+- `/help`
+- `/help/faq`
+- `/help/track-order`
+- `/help/pengiriman`
+- `/help/kebijakan-retur`
+- `/help/hubungi-kami`
+
+> Semua routing e-commerce dibuat **public** dan link sudah tersambung di footer dan navigasi.
+
+## Script Utama
+
+```bash
+npm run dev
+npm run build
+npm run lint
+```
+
+## Environment Variables
+
+Jika dibutuhkan, buat `.env.local` di masing-masing app (contoh untuk `apps/main`):
 
 ```env
 MOCKUP_ADMIN_KEY=admin-demo-2026
 MOCKUP_SESSION_SECRET=demo-session-secret-2026
-MOCKUP_ADMIN_SESSION_MAX_AGE_SECONDS=43200
-MOCKUP_CLIENT_SESSION_MAX_AGE_SECONDS=1209600
-MOCKUP_CLIENT_SHARE_TOKENS_JSON='{"ecom-demo":{"site":"ecommerce","label":"Client Ecommerce","active":true},"catalog-demo":{"site":"catalog","label":"Client Catalog","active":true},"gov-demo":{"site":"government","label":"Client Government","active":true},"company-demo":{"site":"company-profile","label":"Client Company Profile","active":true}}'
 ```
 
-Usage:
+## Troubleshooting
 
-- Admin login: `/admin-access?key=admin-demo-2026`
-- Client ecommerce: `/share/ecom-demo`
-- Client catalog: `/share/catalog-demo`
-- Client government: `/share/gov-demo`
-- Client company profile: `/share/company-demo`
+- **Port bentrok**: cek proses yang berjalan di port 3000-3004 lalu hentikan proses.
+- **Turbopack error**: coba matikan turbopack dengan `NEXT_DISABLE_TURBOPACK=1`.
+- **Lint error path**: jalankan lint per app (`cd apps/ecommerce && npm run lint`).
 
-Notes:
+## Deploy (Vercel)
 
-- `MOCKUP_SESSION_SECRET` is used to sign session cookies.
-- Client token JSON can later be extended with `expiresAt` if you need expiry.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel (Monorepo)
-
-Important: set Vercel `Root Directory` to a specific app folder, not to `apps`.
-
-Examples:
+Set **Root Directory** ke folder app yang ingin dideploy:
 
 - `apps/main`
 - `apps/company-profile`
@@ -80,37 +158,16 @@ Examples:
 - `apps/ecommerce`
 - `apps/government`
 
-Suggested Vercel settings for each project:
-
-- Framework Preset: `Next.js`
-- Root Directory: one of the app folders above
-- Install Command: `npm install` (default is usually fine)
-- Build Command: `npm run build` (default is usually fine)
-
-Vercel will detect the monorepo and install workspace dependencies from the repository root (including `packages/ui` and `packages/lib`).
-
-### Vercel Setup for Single Mockup Project (`apps/main`)
-
-- Framework Preset: `Next.js`
-- Root Directory: `apps/main`
+Gunakan preset Next.js standar:
 - Install Command: `npm install`
 - Build Command: `npm run build`
 
-Add these Environment Variables in Vercel (`Production` and `Preview`):
+## Kontribusi
 
-- `MOCKUP_ADMIN_KEY`
-- `MOCKUP_SESSION_SECRET`
-- `MOCKUP_ADMIN_SESSION_MAX_AGE_SECONDS`
-- `MOCKUP_CLIENT_SESSION_MAX_AGE_SECONDS`
-- `MOCKUP_CLIENT_SHARE_TOKENS_JSON`
+- Buat branch baru untuk tiap perubahan besar.
+- Pastikan build selesai sebelum merge.
 
-For `MOCKUP_CLIENT_SHARE_TOKENS_JSON` in Vercel, paste plain JSON (without outer single quotes), for example:
+## Catatan Konten & Layout
 
-```json
-{
-  "ecom-demo": { "site": "ecommerce", "label": "Client Ecommerce", "active": true },
-  "catalog-demo": { "site": "catalog", "label": "Client Catalog", "active": true },
-  "gov-demo": { "site": "government", "label": "Client Government", "active": true },
-  "company-demo": { "site": "company-profile", "label": "Client Company Profile", "active": true }
-}
-```
+- Copywriting menggunakan tone **ramah** dan konsisten.
+- Spacing dan typography sudah dirapikan untuk tampilan yang lebih rapi.
