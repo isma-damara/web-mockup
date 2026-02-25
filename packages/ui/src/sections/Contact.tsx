@@ -6,14 +6,57 @@ import { Button } from "@workspace/ui/ui/button";
 import { Input } from "@workspace/ui/ui/input";
 import { Textarea } from "@workspace/ui/ui/textarea";
 import { Card, CardContent } from "@workspace/ui/ui/card";
+import type { SimpleIcon } from "simple-icons";
+import { siInstagram } from "simple-icons";
 import {
-  MapPin,
-  Phone,
-  Mail,
-  Clock,
-  Send,
-  CheckCircle,
-} from "lucide-react";
+  MapPinIcon,
+  PhoneIcon,
+  EnvelopeIcon,
+  PaperAirplaneIcon,
+  CheckCircleIcon,
+} from "@heroicons/react/24/outline";
+
+type SocialItem = {
+  label: string;
+  href: string;
+  icon?: SimpleIcon;
+  kind?: "linkedin";
+  handle: string;
+};
+
+const socialMedia: SocialItem[] = [
+  {
+    label: "Instagram",
+    href: "#",
+    icon: siInstagram,
+    handle: "@nexatech.id",
+  },
+  {
+    label: "LinkedIn",
+    href: "#",
+    kind: "linkedin",
+    handle: "NexaTech Indonesia",
+  },
+];
+
+function SocialBrandIcon({ item }: { item: SocialItem }) {
+  if (item.icon) {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4">
+        <path fill="currentColor" d={item.icon.path} />
+      </svg>
+    );
+  }
+
+  return (
+    <span
+      aria-hidden="true"
+      className="inline-flex h-4 w-4 items-center justify-center text-[10px] font-semibold leading-none"
+    >
+      in
+    </span>
+  );
+}
 
 export default function Contact() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -39,24 +82,19 @@ export default function Contact() {
 
   const contactInfo = [
     {
-      icon: MapPin,
+      icon: MapPinIcon,
       title: "Alamat",
       detail: "Jl. Sudirman No. 123, Jakarta Selatan 12190",
     },
     {
-      icon: Phone,
+      icon: PhoneIcon,
       title: "Telepon",
       detail: "+62 21 1234 5678",
     },
     {
-      icon: Mail,
+      icon: EnvelopeIcon,
       title: "Email",
       detail: "hello@nexatech.id",
-    },
-    {
-      icon: Clock,
-      title: "Jam Kerja",
-      detail: "Senin - Jumat, 09:00 - 18:00 WIB",
     },
   ];
 
@@ -115,18 +153,24 @@ export default function Contact() {
                 </CardContent>
               </Card>
             ))}
-
-            {/* Map placeholder */}
-            <Card className="border-border bg-card overflow-hidden">
-              <div className="h-48 bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="h-8 w-8 text-indigo-400 mx-auto mb-2" />
-                  <p className="text-sm text-indigo-600 font-medium">
-                    Jakarta Selatan, Indonesia
-                  </p>
-                </div>
-              </div>
-            </Card>
+            {socialMedia.map((item) => (
+              <Card
+                key={item.label}
+                className="border-border bg-card transition-all hover:shadow-md hover:shadow-indigo-50"
+              >
+                <CardContent className="flex items-start gap-4 p-5">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-indigo-50 text-black">
+                    <SocialBrandIcon item={item} />
+                  </div>
+                  <div>
+                    <div className="font-semibold text-sm">{item.label}</div>
+                    <div className="text-sm text-muted-foreground">
+                      {item.handle}
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
 
           {/* Contact Form */}
@@ -139,7 +183,7 @@ export default function Contact() {
               {submitted ? (
                 <div className="flex flex-col items-center justify-center py-16 text-center">
                   <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100">
-                    <CheckCircle className="h-8 w-8 text-emerald-600" />
+                    <CheckCircleIcon className="h-8 w-8 text-emerald-600" />
                   </div>
                   <h3 className="text-xl font-semibold">Pesan Terkirim!</h3>
                   <p className="mt-2 text-muted-foreground">
@@ -223,7 +267,7 @@ export default function Contact() {
                     size="lg"
                     className="w-full rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white shadow-md shadow-indigo-200"
                   >
-                    <Send className="mr-2 h-4 w-4" />
+                    <PaperAirplaneIcon className="mr-2 h-4 w-4" />
                     Kirim Pesan
                   </Button>
                 </form>

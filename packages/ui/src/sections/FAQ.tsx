@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Badge } from "@workspace/ui/ui/badge";
-import { ChevronDown } from "lucide-react";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 const faqs = [
   {
@@ -79,7 +79,7 @@ export default function FAQ() {
                   >
                     {faq.q}
                   </span>
-                  <ChevronDown
+                  <ChevronDownIcon
                     className={`h-5 w-5 shrink-0 transition-transform duration-300 ${
                       isOpen
                         ? "rotate-180 text-indigo-600"

@@ -1,7 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { X, Cookie } from "lucide-react";
+import {
+  ShieldCheckIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false);
@@ -26,7 +29,7 @@ export default function CookieBanner() {
       <div className="mx-auto max-w-4xl rounded-2xl border border-border bg-white/95 backdrop-blur-lg shadow-xl shadow-slate-200/50 p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
         <div className="flex items-start gap-3 flex-1">
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600">
-            <Cookie className="h-5 w-5" />
+            <ShieldCheckIcon className="h-5 w-5" />
           </div>
           <p className="text-sm text-muted-foreground leading-relaxed">
             Kami menggunakan cookies untuk meningkatkan pengalaman Anda di
@@ -50,7 +53,7 @@ export default function CookieBanner() {
             className="rounded-full p-2 text-muted-foreground hover:bg-muted transition-colors"
             aria-label="Tutup"
           >
-            <X className="h-4 w-4" />
+            <XMarkIcon className="h-4 w-4" />
           </button>
         </div>
       </div>

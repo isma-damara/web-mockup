@@ -4,7 +4,12 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import { Badge } from "@workspace/ui/ui/badge";
 import { Card, CardContent } from "@workspace/ui/ui/card";
 import { Button } from "@workspace/ui/ui/button";
-import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  ChatBubbleLeftRightIcon,
+} from "@heroicons/react/24/outline";
+import { StarIcon } from "@heroicons/react/24/solid";
 
 const testimonials = [
   {
@@ -15,6 +20,7 @@ const testimonials = [
       "NexaTech benar-benar mengubah cara kami berbisnis. Sistem yang mereka bangun meningkatkan efisiensi operasional kami hingga 40%. Tim yang sangat profesional dan responsif!",
     rating: 5,
     gradient: "from-blue-500 to-indigo-500",
+    photo: "/assets/company-profile/testimonials/client-01.jpg",
   },
   {
     name: "Siti Rahayu",
@@ -24,6 +30,7 @@ const testimonials = [
       "Aplikasi e-commerce yang dikembangkan NexaTech luar biasa. Performa cepat, desain menarik, dan konversi meningkat 60%. Sangat recommended!",
     rating: 5,
     gradient: "from-indigo-500 to-purple-500",
+    photo: "/assets/company-profile/testimonials/client-02.jpg",
   },
   {
     name: "Hendra Gunawan",
@@ -33,6 +40,7 @@ const testimonials = [
       "Migrasi cloud yang dilakukan NexaTech berjalan mulus tanpa downtime. Biaya infrastruktur kami turun 35% dengan performa yang justru meningkat. Partner terpercaya.",
     rating: 5,
     gradient: "from-purple-500 to-pink-500",
+    photo: "/assets/company-profile/testimonials/client-03.jpg",
   },
   {
     name: "Lisa Wijayanti",
@@ -42,6 +50,7 @@ const testimonials = [
       "Chatbot AI dari NexaTech menangani 70% inquiry pelanggan kami secara otomatis. Respon cepat dan akurat. Customer satisfaction meningkat signifikan.",
     rating: 5,
     gradient: "from-emerald-500 to-teal-500",
+    photo: "/assets/company-profile/testimonials/client-04.jpg",
   },
   {
     name: "Rudi Hartono",
@@ -51,6 +60,7 @@ const testimonials = [
       "Dashboard analytics dari NexaTech memberikan visibility yang luar biasa terhadap operasi kami. Keputusan bisnis menjadi lebih data-driven dan tepat sasaran.",
     rating: 5,
     gradient: "from-orange-500 to-red-500",
+    photo: "/assets/company-profile/testimonials/client-05.jpg",
   },
 ];
 
@@ -127,13 +137,13 @@ export default function Testimonials() {
           {/* Main testimonial card */}
           <Card className="overflow-hidden border-border bg-card shadow-lg">
             <CardContent className="p-8 sm:p-12 relative">
-              <Quote className="absolute top-6 right-6 h-12 w-12 text-indigo-100" />
+              <ChatBubbleLeftRightIcon className="absolute top-6 right-6 h-12 w-12 text-indigo-100" />
               
               {/* Stars */}
               <div className="flex gap-1 mb-6">
                 {Array.from({ length: testimonials[current].rating }).map(
                   (_, i) => (
-                    <Star
+                    <StarIcon
                       key={i}
                       className="h-5 w-5 fill-amber-400 text-amber-400"
                     />
@@ -149,12 +159,14 @@ export default function Testimonials() {
               {/* Author */}
               <div className="mt-8 flex items-center gap-4">
                 <div
-                  className={`flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br ${testimonials[current].gradient} text-white font-bold`}
+                  className={`h-12 w-12 overflow-hidden rounded-full bg-gradient-to-br p-[2px] ${testimonials[current].gradient}`}
                 >
-                  {testimonials[current].name
-                    .split(" ")
-                    .map((n) => n[0])
-                    .join("")}
+                  <img
+                    src={testimonials[current].photo}
+                    alt={`Foto ${testimonials[current].name}`}
+                    loading="lazy"
+                    className="h-full w-full rounded-full object-cover bg-white"
+                  />
                 </div>
                 <div>
                   <div className="font-semibold">
@@ -177,7 +189,7 @@ export default function Testimonials() {
               onClick={prev}
               className="rounded-full h-10 w-10 border-indigo-200 hover:bg-indigo-50"
             >
-              <ChevronLeft className="h-4 w-4" />
+              <ChevronLeftIcon className="h-4 w-4" />
             </Button>
 
             {/* Dots */}
@@ -201,7 +213,7 @@ export default function Testimonials() {
               onClick={next}
               className="rounded-full h-10 w-10 border-indigo-200 hover:bg-indigo-50"
             >
-              <ChevronRight className="h-4 w-4" />
+              <ChevronRightIcon className="h-4 w-4" />
             </Button>
           </div>
         </div>

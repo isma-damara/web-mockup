@@ -9,7 +9,10 @@ import {
   SheetTrigger,
   SheetTitle,
 } from "@workspace/ui/ui/sheet";
-import { Menu, ChevronDown } from "lucide-react";
+import {
+  Bars3Icon,
+  ChevronDownIcon,
+} from "@heroicons/react/24/outline";
 
 interface SubItem {
   label: string;
@@ -163,7 +166,7 @@ export default function Navbar() {
               >
                 {item.label}
                 {item.sub && (
-                  <ChevronDown
+                  <ChevronDownIcon
                     className={`h-3.5 w-3.5 transition-transform ${
                       openDropdown === item.label ? "rotate-180" : ""
                     }`}
@@ -192,21 +195,11 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Desktop CTA */}
-        <div className="hidden lg:block">
-          <Button
-            asChild
-            className="rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white shadow-md shadow-indigo-200"
-          >
-            <Link href="#kontak">Get Free Consultation</Link>
-          </Button>
-        </div>
-
         {/* Mobile Menu */}
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild className="lg:hidden">
             <Button variant="ghost" size="icon">
-              <Menu className="h-5 w-5" />
+              <Bars3Icon className="h-5 w-5" />
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="w-80 overflow-y-auto">
@@ -237,7 +230,7 @@ export default function Navbar() {
                         }
                         className="rounded-lg p-3 text-muted-foreground hover:bg-muted"
                       >
-                        <ChevronDown
+                        <ChevronDownIcon
                           className={`h-4 w-4 transition-transform ${
                             mobileExpanded === item.label ? "rotate-180" : ""
                           }`}

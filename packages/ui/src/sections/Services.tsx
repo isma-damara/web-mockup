@@ -10,17 +10,17 @@ import {
   CardTitle,
 } from "@workspace/ui/ui/card";
 import {
-  Globe,
-  Smartphone,
-  Cloud,
-  Brain,
-  Shield,
-  BarChart3,
-} from "lucide-react";
+  GlobeAltIcon,
+  DevicePhoneMobileIcon,
+  CloudIcon,
+  CpuChipIcon,
+  ShieldCheckIcon,
+  ChartBarIcon,
+} from "@heroicons/react/24/outline";
 
 const services = [
   {
-    icon: Globe,
+    icon: GlobeAltIcon,
     title: "Web Development",
     description:
       "Website modern dan aplikasi web yang responsif, cepat, dan SEO-friendly menggunakan teknologi terkini seperti React, Next.js, dan Node.js.",
@@ -28,7 +28,7 @@ const services = [
     gradient: "from-blue-500 to-cyan-500",
   },
   {
-    icon: Smartphone,
+    icon: DevicePhoneMobileIcon,
     title: "Mobile App",
     description:
       "Aplikasi mobile native dan cross-platform untuk iOS & Android dengan pengalaman pengguna yang intuitif dan performa optimal.",
@@ -36,7 +36,7 @@ const services = [
     gradient: "from-indigo-500 to-blue-500",
   },
   {
-    icon: Cloud,
+    icon: CloudIcon,
     title: "Cloud Solutions",
     description:
       "Infrastruktur cloud yang scalable, aman, dan cost-effective. Migrasi, deployment, serta manajemen cloud dengan AWS, GCP, dan Azure.",
@@ -44,7 +44,7 @@ const services = [
     gradient: "from-purple-500 to-indigo-500",
   },
   {
-    icon: Brain,
+    icon: CpuChipIcon,
     title: "AI & Machine Learning",
     description:
       "Solusi kecerdasan buatan untuk otomasi bisnis, analisis prediktif, chatbot cerdas, dan computer vision sesuai kebutuhan Anda.",
@@ -52,7 +52,7 @@ const services = [
     gradient: "from-pink-500 to-purple-500",
   },
   {
-    icon: Shield,
+    icon: ShieldCheckIcon,
     title: "Cybersecurity",
     description:
       "Proteksi menyeluruh untuk infrastruktur digital Anda. Penetration testing, security audit, dan implementasi keamanan berlapis.",
@@ -60,7 +60,7 @@ const services = [
     gradient: "from-orange-500 to-pink-500",
   },
   {
-    icon: BarChart3,
+    icon: ChartBarIcon,
     title: "Data Analytics",
     description:
       "Transformasi data mentah menjadi insight bisnis yang actionable. Dashboard interaktif, reporting otomatis, dan business intelligence.",
