@@ -3,7 +3,12 @@
 import { useEffect, useRef, useState } from "react";
 import { Badge } from "@workspace/ui/ui/badge";
 import { Separator } from "@workspace/ui/ui/separator";
-import { Target, Eye, Lightbulb, Users } from "lucide-react";
+import {
+  CursorArrowRaysIcon,
+  EyeIcon,
+  LightBulbIcon,
+  UsersIcon,
+} from "@heroicons/react/24/outline";
 
 function AnimatedCounter({
   end,
@@ -66,7 +71,6 @@ export default function About() {
   return (
     <section id="tentang" className="py-24 sm:py-32 bg-white" ref={sectionRef}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section heading */}
         <div
           className={`text-center max-w-3xl mx-auto ${
             isVisible ? "animate-fade-up" : "opacity-0"
@@ -93,39 +97,72 @@ export default function About() {
 
         <Separator className="my-16 max-w-xs mx-auto" />
 
+        {/* About */}
+        <div
+          className={`group relative rounded-2xl border border-border bg-card p-8 transition-all duration-300 hover:shadow-lg hover:shadow-indigo-100 hover:-translate-y-1 ${
+            isVisible ? "animate-fade-up" : "opacity-0"
+          }`}
+        >
+          <div className="grid gap-8 lg:grid-cols-5 lg:items-start">
+            <div className="lg:col-span-3">
+              <div className="mb-4 inline-flex rounded-xl bg-gradient-to-br from-purple-600 to-pink-500 p-3 text-white shadow-md">
+                <LightBulbIcon className="h-6 w-6" />
+              </div>
+              <h3 className="text-xl font-semibold">About NexaTech</h3>
+              <p className="mt-2 text-muted-foreground leading-relaxed">
+                NexaTech adalah partner transformasi digital yang berfokus pada
+                solusi yang relevan dengan kebutuhan bisnis, mudah digunakan,
+                dan bisa bertumbuh bersama perusahaan klien.
+              </p>
+              <p className="mt-4 text-muted-foreground leading-relaxed">
+                Kami membangun produk dan sistem digital dengan pendekatan yang
+                kolaboratif, terukur, dan berorientasi hasil. Fokus kami adalah
+                membantu perusahaan mempercepat proses bisnis, meningkatkan
+                pengalaman pelanggan, dan menyiapkan fondasi teknologi yang siap
+                berkembang untuk kebutuhan jangka panjang.
+              </p>
+            </div>
+
+            <div className="flex items-end justify-center lg:col-span-2 lg:justify-end lg:self-end">
+              <div
+                className="w-full max-w-sm overflow-hidden rounded-2xl border border-border bg-background lg:max-w-[360px]"
+                style={{ animationDelay: "150ms" }}
+              >
+                <img
+                  src="/assets/company-profile/about/about.jpg"
+                  alt="Visual company profile NexaTech"
+                  loading="lazy"
+                  className="h-56 w-full object-cover sm:h-60 lg:h-56"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Vision & Mission */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-8 md:grid-cols-2">
           {[
             {
-              icon: Eye,
+              icon: EyeIcon,
               title: "Visi",
               description:
                 "Menjadi perusahaan teknologi terdepan di Asia Tenggara yang dikenal karena inovasi, kualitas, dan dampak positifnya terhadap transformasi digital.",
               gradient: "from-blue-500 to-indigo-600",
             },
             {
-              icon: Target,
+              icon: CursorArrowRaysIcon,
               title: "Misi",
               description:
                 "Menyediakan solusi teknologi berkualitas tinggi yang membantu bisnis bertumbuh, meningkatkan efisiensi operasional, dan menciptakan pengalaman digital yang luar biasa.",
               gradient: "from-indigo-600 to-purple-600",
             },
-            {
-              icon: Lightbulb,
-              title: "Nilai",
-              description:
-                "Inovasi tanpa henti, integritas dalam setiap proyek, kolaborasi yang produktif, dan komitmen terhadap keunggulan — menjadi fondasi dalam setiap langkah kami.",
-              gradient: "from-purple-600 to-pink-500",
-            },
           ].map((item, idx) => (
             <div
               key={item.title}
               className={`group relative rounded-2xl border border-border bg-card p-8 transition-all duration-300 hover:shadow-lg hover:shadow-indigo-100 hover:-translate-y-1 ${
-                isVisible
-                  ? "animate-fade-up"
-                  : "opacity-0"
+                isVisible ? "animate-fade-up" : "opacity-0"
               }`}
-              style={{ animationDelay: `${idx * 200}ms` }}
+              style={{ animationDelay: `${(idx + 1) * 200}ms` }}
             >
               <div
                 className={`mb-4 inline-flex rounded-xl bg-gradient-to-br ${item.gradient} p-3 text-white shadow-md`}
@@ -178,25 +215,25 @@ export default function About() {
           >
             {[
               {
-                icon: Users,
+                icon: UsersIcon,
                 value: 50,
                 suffix: "+",
                 label: "Klien Puas",
               },
               {
-                icon: Target,
+                icon: CursorArrowRaysIcon,
                 value: 150,
                 suffix: "+",
                 label: "Proyek Sukses",
               },
               {
-                icon: Lightbulb,
+                icon: LightBulbIcon,
                 value: 8,
                 suffix: "+",
                 label: "Tahun Berpengalaman",
               },
               {
-                icon: Eye,
+                icon: EyeIcon,
                 value: 99,
                 suffix: "%",
                 label: "Tingkat Kepuasan",

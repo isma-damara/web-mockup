@@ -10,7 +10,7 @@ import {
   CardTitle,
 } from "@workspace/ui/ui/card";
 import { Button } from "@workspace/ui/ui/button";
-import { ExternalLink } from "lucide-react";
+import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 
 const projects = [
   {
@@ -20,6 +20,7 @@ const projects = [
       "Platform e-commerce full-stack dengan fitur real-time inventory, payment gateway, dan admin dashboard.",
     tech: ["Next.js", "Node.js", "PostgreSQL", "Stripe"],
     color: "bg-gradient-to-br from-blue-500 to-indigo-600",
+    thumbnail: "/assets/company-profile/portfolio/portfolio-01.jpg",
   },
   {
     title: "HealthTrack Mobile App",
@@ -28,6 +29,7 @@ const projects = [
       "Aplikasi kesehatan mobile dengan fitur tracking aktivitas, telemedicine, dan integrasi wearable device.",
     tech: ["React Native", "Firebase", "TensorFlow Lite"],
     color: "bg-gradient-to-br from-emerald-500 to-teal-600",
+    thumbnail: "/assets/company-profile/portfolio/portfolio-02.jpg",
   },
   {
     title: "Smart Analytics Dashboard",
@@ -36,6 +38,7 @@ const projects = [
       "Dashboard business intelligence dengan real-time data visualization, predictive analytics, dan automated reporting.",
     tech: ["React", "Python", "Apache Kafka", "D3.js"],
     color: "bg-gradient-to-br from-purple-500 to-pink-600",
+    thumbnail: "/assets/company-profile/portfolio/portfolio-03.jpg",
   },
   {
     title: "Cloud Migration Suite",
@@ -44,38 +47,52 @@ const projects = [
       "Migrasi infrastruktur enterprise ke multi-cloud dengan zero downtime, automated CI/CD, dan cost optimization.",
     tech: ["AWS", "Terraform", "Kubernetes", "Docker"],
     color: "bg-gradient-to-br from-orange-500 to-red-600",
+    thumbnail: "/assets/company-profile/portfolio/portfolio-04.jpg",
   },
   {
-    title: "AI Chatbot Engine",
-    category: "Cloud",
-    description:
-      "Engine chatbot cerdas dengan NLP berbahasa Indonesia, integrasi multi-channel, dan sentiment analysis.",
-    tech: ["Python", "GPT API", "FastAPI", "Redis"],
-    color: "bg-gradient-to-br from-indigo-500 to-purple-600",
-  },
-  {
-    title: "SecureNet Platform",
+    title: "Customer Support Portal",
     category: "Web",
     description:
-      "Platform keamanan siber dengan threat monitoring real-time, automated incident response, dan compliance reporting.",
-    tech: ["Go", "ElasticSearch", "React", "gRPC"],
+      "Portal layanan pelanggan berbasis web dengan ticketing, live chat, knowledge base, dan dashboard SLA untuk tim support.",
+    tech: ["Next.js", "Node.js", "PostgreSQL", "Socket.IO"],
+    color: "bg-gradient-to-br from-indigo-500 to-purple-600",
+    thumbnail: "/assets/company-profile/portfolio/portfolio-05.jpg",
+  },
+  {
+    title: "Company Intranet Hub",
+    category: "Web",
+    description:
+      "Intranet perusahaan untuk pengumuman internal, dokumen divisi, approval workflow, dan direktori karyawan terpusat.",
+    tech: ["React", "NestJS", "PostgreSQL", "Redis"],
     color: "bg-gradient-to-br from-slate-600 to-slate-800",
+    thumbnail: "/assets/company-profile/portfolio/portfolio-06.jpg",
   },
   {
-    title: "FinPay Mobile Wallet",
-    category: "Mobile",
+    title: "Online Booking Website",
+    category: "Web",
     description:
-      "Dompet digital mobile dengan fitur P2P transfer, bill payment, dan QR code payment system.",
-    tech: ["Flutter", "Dart", "Firebase", "Stripe"],
+      "Website reservasi layanan dengan jadwal real-time, payment gateway, notifikasi email, dan panel admin manajemen slot.",
+    tech: ["Next.js", "Prisma", "PostgreSQL", "Midtrans"],
     color: "bg-gradient-to-br from-amber-500 to-orange-600",
+    thumbnail: "/assets/company-profile/portfolio/portfolio-07.jpg",
   },
   {
-    title: "CloudSync Storage",
-    category: "Cloud",
+    title: "Learning Management Website",
+    category: "Web",
     description:
-      "Platform penyimpanan cloud enterprise dengan enkripsi end-to-end, sinkronisasi real-time, dan backup otomatis.",
-    tech: ["AWS S3", "Go", "Redis", "PostgreSQL"],
+      "Platform LMS berbasis web untuk course management, progress tracking, kuis online, dan sertifikat otomatis.",
+    tech: ["Next.js", "Laravel", "MySQL", "Tailwind CSS"],
     color: "bg-gradient-to-br from-cyan-500 to-blue-600",
+    thumbnail: "/assets/company-profile/portfolio/portfolio-08.jpg",
+  },
+  {
+    title: "Retail POS Analytics",
+    category: "Web",
+    description:
+      "Aplikasi web analytics retail untuk monitoring cabang, performa penjualan, stok produk, dan laporan operasional harian.",
+    tech: ["Next.js", "NestJS", "PostgreSQL", "Redis"],
+    color: "bg-gradient-to-br from-violet-500 to-indigo-600",
+    thumbnail: "/assets/company-profile/portfolio/portfolio-09.jpg",
   },
 ];
 
@@ -163,22 +180,18 @@ export default function Portfolio() {
               }`}
               style={{ animationDelay: `${idx * 100}ms` }}
             >
-              {/* Color header */}
-              <div
-                className={`h-48 ${project.color} flex items-center justify-center relative overflow-hidden`}
-              >
+              {/* Thumbnail header */}
+              <div className="relative h-48 overflow-hidden">
+                <img
+                  src={project.thumbnail}
+                  alt={`Thumbnail ${project.title}`}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
                 <div className="absolute inset-0 opacity-20">
                   <div className="absolute top-4 right-4 h-20 w-20 rounded-full border-2 border-white/30" />
                   <div className="absolute bottom-4 left-4 h-16 w-16 rounded-lg border-2 border-white/20 rotate-12" />
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-24 w-24 rounded-2xl border-2 border-white/25 rotate-45" />
-                </div>
-                <div className="text-center text-white relative z-10">
-                  <div className="text-3xl font-bold tracking-tight">
-                    {project.title.split(" ")[0]}
-                  </div>
-                  <div className="text-sm font-medium opacity-80">
-                    {project.category}
-                  </div>
                 </div>
               </div>
               <CardHeader className="pb-2">
@@ -187,9 +200,10 @@ export default function Portfolio() {
                   <Button
                     variant="ghost"
                     size="icon"
+                    aria-label={`Lihat detail ${project.title}`}
                     className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity"
                   >
-                    <ExternalLink className="h-4 w-4" />
+                    <ArrowTopRightOnSquareIcon className="h-4 w-4" />
                   </Button>
                 </div>
                 <CardDescription className="leading-relaxed">

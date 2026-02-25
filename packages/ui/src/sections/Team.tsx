@@ -3,7 +3,49 @@
 import { useEffect, useRef, useState } from "react";
 import { Badge } from "@workspace/ui/ui/badge";
 import { Card, CardContent } from "@workspace/ui/ui/card";
-import { Linkedin, Twitter, Github } from "lucide-react";
+import { EnvelopeIcon } from "@heroicons/react/24/outline";
+import type { SimpleIcon } from "simple-icons";
+import { siInstagram } from "simple-icons";
+
+type SocialItem = {
+  label: string;
+  href: string;
+  icon?: SimpleIcon;
+  kind?: "email" | "linkedin";
+};
+
+const socialItems: SocialItem[] = [
+  { label: "Email", href: "mailto:hello@nexatech.id", kind: "email" },
+  { label: "Instagram", href: "#", icon: siInstagram },
+  { label: "LinkedIn", href: "#", kind: "linkedin" },
+];
+
+function SocialBrandIcon({ item }: { item: SocialItem }) {
+  if (item.kind === "email") {
+    return <EnvelopeIcon className="h-[18px] w-[18px]" />;
+  }
+
+  if (item.icon) {
+    return (
+      <svg
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+        className="h-[18px] w-[18px]"
+      >
+        <path fill="currentColor" d={item.icon.path} />
+      </svg>
+    );
+  }
+
+  return (
+    <span
+      aria-hidden="true"
+      className="inline-flex h-[18px] w-[18px] items-center justify-center text-[12px] font-semibold leading-none text-current"
+    >
+      in
+    </span>
+  );
+}
 
 const team = [
   {
@@ -12,6 +54,7 @@ const team = [
     bio: "Berpengalaman 15 tahun di industri teknologi. Ex-Google, Ex-Tokopedia.",
     avatar: "AW",
     gradient: "from-indigo-500 to-blue-600",
+    photo: "/assets/company-profile/team/team-01.jpg",
   },
   {
     name: "Sarah Putri",
@@ -19,6 +62,7 @@ const team = [
     bio: "Full-stack architect dengan keahlian di cloud infrastructure dan system design.",
     avatar: "SP",
     gradient: "from-purple-500 to-pink-600",
+    photo: "/assets/company-profile/team/team-02.jpg",
   },
   {
     name: "Budi Santoso",
@@ -26,6 +70,7 @@ const team = [
     bio: "Ph.D in Machine Learning dari ITB. Spesialis NLP dan computer vision.",
     avatar: "BS",
     gradient: "from-emerald-500 to-teal-600",
+    photo: "/assets/company-profile/team/team-03.jpg",
   },
   {
     name: "Diana Kusuma",
@@ -33,6 +78,7 @@ const team = [
     bio: "UI/UX designer dengan passion menciptakan pengalaman digital yang indah.",
     avatar: "DK",
     gradient: "from-orange-500 to-red-500",
+    photo: "/assets/company-profile/team/team-04.jpg",
   },
   {
     name: "Reza Ahmad",
@@ -40,6 +86,7 @@ const team = [
     bio: "Backend specialist dengan expertise di microservices, Kubernetes, dan DevOps.",
     avatar: "RA",
     gradient: "from-blue-500 to-cyan-500",
+    photo: "/assets/company-profile/team/team-05.jpg",
   },
   {
     name: "Maya Anggraini",
@@ -47,6 +94,7 @@ const team = [
     bio: "Berpengalaman mengelola produk digital berskala besar dengan 1M+ pengguna.",
     avatar: "MA",
     gradient: "from-pink-500 to-purple-500",
+    photo: "/assets/company-profile/team/team-06.jpg",
   },
 ];
 
@@ -107,9 +155,14 @@ export default function Team() {
               <CardContent className="pt-8 pb-6">
                 {/* Avatar */}
                 <div
-                  className={`mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br ${member.gradient} text-white text-2xl font-bold shadow-lg transition-transform group-hover:scale-105`}
+                  className={`mx-auto mb-4 h-24 w-24 overflow-hidden rounded-full bg-gradient-to-br p-1 ${member.gradient} shadow-lg transition-transform group-hover:scale-105`}
                 >
-                  {member.avatar}
+                  <img
+                    src={member.photo}
+                    alt={`Foto ${member.name}`}
+                    loading="lazy"
+                    className="h-full w-full rounded-full object-cover bg-white"
+                  />
                 </div>
                 <h3 className="text-lg font-semibold">{member.name}</h3>
                 <Badge
@@ -123,13 +176,15 @@ export default function Team() {
                 </p>
                 {/* Social Links */}
                 <div className="mt-4 flex items-center justify-center gap-2">
-                  {[Linkedin, Twitter, Github].map((Icon, i) => (
-                    <button
-                      key={i}
-                      className="rounded-full p-2 text-muted-foreground transition-colors hover:bg-indigo-50 hover:text-indigo-600"
+                  {socialItems.map((item) => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      aria-label={`${item.label} ${member.name}`}
+                      className="inline-flex h-6 w-6 items-center justify-center text-black transition-opacity hover:opacity-70"
                     >
-                      <Icon className="h-4 w-4" />
-                    </button>
+                      <SocialBrandIcon item={item} />
+                    </a>
                   ))}
                 </div>
               </CardContent>

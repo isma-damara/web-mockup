@@ -1,15 +1,15 @@
 import Link from "next/link";
 import { Separator } from "@workspace/ui/ui/separator";
 import {
-  Linkedin,
-  Twitter,
-  Github,
-  Instagram,
-  Youtube,
-  MapPin,
-  Phone,
-  Mail,
-} from "lucide-react";
+  BriefcaseIcon,
+  HashtagIcon,
+  CodeBracketIcon,
+  CameraIcon,
+  PlayCircleIcon,
+  MapPinIcon,
+  PhoneIcon,
+  EnvelopeIcon,
+} from "@heroicons/react/24/outline";
 
 const footerLinks = {
   Perusahaan: [
@@ -39,11 +39,11 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Github, href: "#", label: "GitHub" },
-  { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: Youtube, href: "#", label: "YouTube" },
+  { icon: BriefcaseIcon, href: "#", label: "LinkedIn" },
+  { icon: HashtagIcon, href: "#", label: "Twitter" },
+  { icon: CodeBracketIcon, href: "#", label: "GitHub" },
+  { icon: CameraIcon, href: "#", label: "Instagram" },
+  { icon: PlayCircleIcon, href: "#", label: "YouTube" },
 ];
 
 export default function Footer() {
@@ -70,15 +70,15 @@ export default function Footer() {
             {/* Contact Info */}
             <div className="mt-5 space-y-2.5">
               <div className="flex items-start gap-2 text-sm text-slate-400">
-                <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-indigo-400" />
+                <MapPinIcon className="h-4 w-4 mt-0.5 shrink-0 text-indigo-400" />
                 <span>Jl. Sudirman No. 123, Jakarta Selatan 12190</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-slate-400">
-                <Mail className="h-4 w-4 shrink-0 text-indigo-400" />
+                <EnvelopeIcon className="h-4 w-4 shrink-0 text-indigo-400" />
                 <span>hello@nexatech.id</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-slate-400">
-                <Phone className="h-4 w-4 shrink-0 text-indigo-400" />
+                <PhoneIcon className="h-4 w-4 shrink-0 text-indigo-400" />
                 <span>+62 21 1234 5678</span>
               </div>
             </div>
@@ -95,6 +95,19 @@ export default function Footer() {
                   <social.icon className="h-4 w-4" />
                 </a>
               ))}
+            </div>
+
+            <div className="mt-6 overflow-hidden rounded-xl border border-slate-800 bg-slate-950">
+              <div className="px-3 py-2 text-xs font-medium uppercase tracking-wide text-slate-400">
+                Peta Lokasi
+              </div>
+              <iframe
+                title="Peta lokasi kantor NexaTech"
+                src="https://www.google.com/maps?q=Jl.%20Sudirman%20No.%20123%2C%20Jakarta%20Selatan&output=embed"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="h-40 w-full border-0"
+              />
             </div>
           </div>
 

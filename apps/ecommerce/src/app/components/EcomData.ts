@@ -69,9 +69,9 @@ export const products = [
 ];
 
 export const flashSale = [
-  { id: 101, name: "Knit Cardigan", orig: 399000, sale: 199000, gradient: "from-amber-300 to-orange-300", discount: 50 },
-  { id: 102, name: "Canvas Tote Bag", orig: 249000, sale: 149000, gradient: "from-yellow-300 to-amber-300", discount: 40 },
-  { id: 103, name: "Linen Shirt", orig: 329000, sale: 197000, gradient: "from-orange-300 to-red-300", discount: 40 },
+  { id: 101, productId: 1, name: "Knit Cardigan", orig: 399000, sale: 199000, gradient: "from-amber-300 to-orange-300", discount: 50 },
+  { id: 102, productId: 3, name: "Canvas Tote Bag", orig: 249000, sale: 149000, gradient: "from-yellow-300 to-amber-300", discount: 40 },
+  { id: 103, productId: 6, name: "Linen Shirt", orig: 329000, sale: 197000, gradient: "from-orange-300 to-red-300", discount: 40 },
 ];
 
 export const blogPosts = [

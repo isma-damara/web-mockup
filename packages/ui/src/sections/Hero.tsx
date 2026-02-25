@@ -4,7 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@workspace/ui/ui/button";
 import { Badge } from "@workspace/ui/ui/badge";
 import Link from "next/link";
-import { ArrowRight, Sparkles, MessageCircle } from "lucide-react";
+import {
+  ArrowRightIcon,
+  SparklesIcon,
+} from "@heroicons/react/24/outline";
 
 const headlines = [
   "Digital Bersama Kami",
@@ -51,6 +54,13 @@ export default function Hero() {
     >
       {/* Background gradient blobs */}
       <div className="absolute inset-0 -z-10">
+        <img
+          src="/assets/company-profile/hero/hero.jpg"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-cover opacity-45"
+        />
+        <div className="absolute inset-0 bg-white/55" />
         <div className="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-indigo-200/40 blur-3xl animate-float" />
         <div className="absolute top-1/3 right-1/4 h-80 w-80 rounded-full bg-purple-200/40 blur-3xl animate-float animation-delay-400" />
         <div className="absolute bottom-1/4 left-1/3 h-72 w-72 rounded-full bg-blue-200/30 blur-3xl animate-float animation-delay-800" />
@@ -71,7 +81,7 @@ export default function Hero() {
             variant="secondary"
             className="mb-6 rounded-full px-4 py-1.5 text-sm font-medium border border-indigo-200 bg-indigo-50 text-indigo-700"
           >
-            <Sparkles className="mr-1.5 h-3.5 w-3.5" />
+            <SparklesIcon className="mr-1.5 h-3.5 w-3.5" />
             Inovasi Teknologi 2026
           </Badge>
         </div>
@@ -101,19 +111,9 @@ export default function Hero() {
             size="lg"
             className="rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-8 shadow-lg shadow-indigo-200 transition-all hover:shadow-xl hover:shadow-indigo-300 hover:-translate-y-0.5"
           >
-            <Link href="#kontak">
-              <MessageCircle className="mr-2 h-4 w-4" />
-              Get Free Consultation
-            </Link>
-          </Button>
-          <Button
-            asChild
-            size="lg"
-            className="rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-8 shadow-lg shadow-indigo-200 transition-all hover:shadow-xl hover:shadow-indigo-300 hover:-translate-y-0.5"
-          >
             <Link href="#layanan">
               Lihat Layanan
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRightIcon className="ml-2 h-4 w-4" />
             </Link>
           </Button>
           <Button

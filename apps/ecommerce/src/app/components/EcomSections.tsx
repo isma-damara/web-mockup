@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import {
   Star, Zap, Clock, Camera, Instagram, Twitter, Facebook, Youtube,
   CreditCard, Smartphone, QrCode, Truck, Shield, Package, Tag,
@@ -45,7 +46,7 @@ export function CountdownTimer() {
 /* ---- LOOKBOOK / STYLE INSPIRATION ---- */
 export function Lookbook() {
   const looks = [
-    { title: "Street Casual", gradient: "from-amber-300 to-orange-400", items: "Denim Jacket + Cargo Pants + Sneakers" },
+    { title: "Street Casual", gradient: "from-emerald-300 to-teal-400", items: "Denim Jacket + Cargo Pants + Sneakers" },
     { title: "Office Chic", gradient: "from-rose-300 to-pink-400", items: "Blazer + Silk Dress + Heels" },
     { title: "Weekend Vibes", gradient: "from-emerald-300 to-teal-400", items: "Linen Shirt + Canvas Bag + Sunglasses" },
     { title: "Night Out", gradient: "from-violet-300 to-purple-400", items: "Platform Boots + Crossbody Bag" },
@@ -53,16 +54,16 @@ export function Lookbook() {
     { title: "Minimalist", gradient: "from-slate-300 to-zinc-400", items: "Classic Sneakers + Oversized Blazer" },
   ];
   return (
-    <section id="lookbook" className="py-20 sm:py-28 bg-white">
+    <section id="lookbook" className="py-20 sm:py-24 bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-4 py-1.5 text-sm font-medium text-amber-600 mb-4 border border-amber-200/50">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-4 py-1.5 text-sm font-medium text-emerald-600 mb-4 border border-emerald-200/50">
             <Sparkles className="h-3.5 w-3.5" /> Style Inspiration
           </span>
           <h2 className="text-2xl font-bold text-slate-800 sm:text-3xl">
-            Lookbook & <span className="text-amber-600">Inspirasi</span>
+            Lookbook & <span className="text-emerald-600">Inspirasi</span>
           </h2>
-          <p className="mt-2 text-slate-500 max-w-lg mx-auto">Temukan kombinasi outfit yang sempurna untuk setiap momen.</p>
+          <p className="mt-2 text-slate-500 max-w-lg mx-auto leading-relaxed">Temukan kombinasi outfit yang pas untuk setiap momen.</p>
         </div>
         <div className="grid gap-4 grid-cols-2 md:grid-cols-3">
           {looks.map((look, i) => (
@@ -89,24 +90,24 @@ export function Lookbook() {
 /* ---- BLOG / STYLE GUIDE ---- */
 export function BlogSection() {
   return (
-    <section id="blog" className="py-20 sm:py-28 bg-amber-50/30">
+    <section id="blog" className="py-20 sm:py-24 bg-emerald-50/30">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-2xl font-bold text-slate-800 sm:text-3xl">
-            Blog & <span className="text-amber-600">Style Guide</span>
+            Blog & <span className="text-emerald-600">Style Guide</span>
           </h2>
-          <p className="mt-2 text-slate-500">Tips fashion, panduan gaya, dan inspirasi outfit terbaru.</p>
+          <p className="mt-2 text-slate-500 leading-relaxed">Tips fashion, panduan gaya, dan inspirasi outfit terbaru.</p>
         </div>
         <div className="grid gap-6 sm:grid-cols-3">
           {blogPosts.map((post) => (
-            <div key={post.title} className="group rounded-2xl border border-slate-100 bg-white overflow-hidden hover:shadow-xl hover:shadow-amber-100 hover:-translate-y-1 transition-all duration-300">
+            <div key={post.title} className="group rounded-2xl border border-slate-100 bg-white overflow-hidden hover:shadow-xl hover:shadow-emerald-100 hover:-translate-y-1 transition-all duration-300">
               <div className={`h-44 bg-gradient-to-br ${post.gradient} flex items-center justify-center relative overflow-hidden`}>
                 <div className="absolute inset-0 opacity-20"><div className="absolute top-4 right-4 h-16 w-16 rounded-full border-2 border-white/30" /></div>
                 <span className="text-white/30 text-3xl font-bold">{post.category.split(" ")[0]}</span>
               </div>
               <div className="p-5">
-                <span className="text-xs font-medium text-amber-500">{post.category}</span>
-                <h3 className="mt-1 text-sm font-semibold text-slate-800 group-hover:text-amber-600 transition-colors">{post.title}</h3>
+                <span className="text-xs font-medium text-emerald-500">{post.category}</span>
+                <h3 className="mt-1 text-sm font-semibold text-slate-800 group-hover:text-emerald-600 transition-colors">{post.title}</h3>
                 <p className="mt-2 text-xs text-slate-500 leading-relaxed">{post.excerpt}</p>
                 <div className="mt-3 text-xs text-slate-400">{post.date}</div>
               </div>
@@ -121,19 +122,19 @@ export function BlogSection() {
 /* ---- CUSTOMER REVIEWS ---- */
 export function ReviewSection() {
   return (
-    <section className="py-20 sm:py-28 bg-white">
+    <section className="py-20 sm:py-24 bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-2xl font-bold text-slate-800 sm:text-3xl">
-            Apa Kata <span className="text-amber-600">Pelanggan</span>
+            Apa Kata <span className="text-emerald-600">Pelanggan</span>
           </h2>
-          <p className="mt-2 text-slate-500">Ulasan asli dari pelanggan yang sudah berbelanja.</p>
+          <p className="mt-2 text-slate-500 leading-relaxed">Ulasan asli dari pelanggan yang sudah berbelanja.</p>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {customerReviews.map((rev, i) => (
-            <div key={i} className="rounded-2xl border border-slate-100 bg-white p-5 hover:shadow-lg hover:shadow-amber-50 transition-shadow">
+            <div key={i} className="rounded-2xl border border-slate-100 bg-white p-5 hover:shadow-lg hover:shadow-emerald-50 transition-shadow">
               <div className="flex items-center gap-3 mb-3">
-                <div className="h-10 w-10 rounded-full bg-gradient-to-br from-amber-400 to-orange-400 flex items-center justify-center text-sm font-bold text-white">
+                <div className="h-10 w-10 rounded-full bg-gradient-to-br from-emerald-400 to-teal-400 flex items-center justify-center text-sm font-bold text-white">
                   {rev.name.split(" ")[0][0]}
                 </div>
                 <div>
@@ -143,15 +144,15 @@ export function ReviewSection() {
               </div>
               <div className="flex gap-0.5 mb-2">
                 {Array.from({ length: 5 }).map((_, j) => (
-                  <Star key={j} className={`h-3 w-3 ${j < rev.rating ? "fill-amber-400 text-amber-400" : "text-slate-200"}`} />
+                  <Star key={j} className={`h-3 w-3 ${j < rev.rating ? "fill-emerald-400 text-emerald-400" : "text-slate-200"}`} />
                 ))}
               </div>
               <p className="text-sm text-slate-600 leading-relaxed mb-2">&ldquo;{rev.comment}&rdquo;</p>
-              <div className="text-[10px] text-amber-500 font-medium">{rev.product}</div>
+              <div className="text-[10px] text-emerald-500 font-medium">{rev.product}</div>
               {/* Photo upload preview placeholder */}
               <div className="mt-3 flex gap-2">
-                <div className="h-12 w-12 rounded-lg bg-amber-50 border border-amber-100 flex items-center justify-center">
-                  <Camera className="h-4 w-4 text-amber-300" />
+                <div className="h-12 w-12 rounded-lg bg-emerald-50 border border-emerald-100 flex items-center justify-center">
+                  <Camera className="h-4 w-4 text-emerald-300" />
                 </div>
               </div>
             </div>
@@ -170,31 +171,31 @@ export function EcomFooter() {
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-amber-500 to-orange-500">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-500 to-teal-500">
                 <Tag className="h-4 w-4 text-white" />
               </div>
-              <span className="text-lg font-bold text-white">Urban<span className="text-amber-400">Style</span></span>
+              <span className="text-lg font-bold text-white">Urban<span className="text-emerald-400">Style</span></span>
             </div>
             <p className="text-sm text-slate-400 leading-relaxed max-w-xs mb-4">
-              Fashion terkini dengan kualitas terbaik untuk gaya hidup modern Anda.
+              Koleksi fashion yang nyaman dipakai, gampang dipadukan, dan selalu up to date.
             </p>
             <div className="space-y-2 mb-5">
               <div className="flex items-center gap-2 text-sm text-slate-400">
-                <MapPin className="h-4 w-4 text-amber-400 shrink-0" />
+                <MapPin className="h-4 w-4 text-emerald-400 shrink-0" />
                 <span>Jl. Sudirman No. 88, Jakarta Pusat</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-slate-400">
-                <Phone className="h-4 w-4 text-amber-400 shrink-0" />
+                <Phone className="h-4 w-4 text-emerald-400 shrink-0" />
                 <span>+62 21 5555 8888</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-slate-400">
-                <Mail className="h-4 w-4 text-amber-400 shrink-0" />
+                <Mail className="h-4 w-4 text-emerald-400 shrink-0" />
                 <span>hello@urbanstyle.id</span>
               </div>
             </div>
             <div className="flex gap-3">
               {[Instagram, Twitter, Facebook, Youtube].map((Icon, i) => (
-                <a key={i} href="#" className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-800 text-slate-400 hover:bg-amber-500 hover:text-white transition-all">
+                <a key={i} href="#" className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-800 text-slate-400 hover:bg-emerald-500 hover:text-white transition-all">
                   <Icon className="h-4 w-4" />
                 </a>
               ))}
@@ -208,7 +209,28 @@ export function EcomFooter() {
               <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-white">{col.title}</h4>
               <ul className="space-y-2">
                 {col.links.map((l) => (
-                  <li key={l}><span className="text-sm text-slate-400 hover:text-amber-400 cursor-pointer transition-colors">{l}</span></li>
+                  <li key={l}>
+                    {col.title === "Bantuan" ? (
+                      <Link
+                        href={
+                          l === "FAQ"
+                            ? "/help/faq"
+                            : l === "Track Order"
+                              ? "/help/track-order"
+                              : l === "Pengiriman"
+                                ? "/help/pengiriman"
+                                : l === "Kebijakan Retur"
+                                  ? "/help/kebijakan-retur"
+                                  : "/help/hubungi-kami"
+                        }
+                        className="text-sm text-slate-400 hover:text-emerald-400 transition-colors"
+                      >
+                        {l}
+                      </Link>
+                    ) : (
+                      <span className="text-sm text-slate-400 hover:text-emerald-400 cursor-pointer transition-colors">{l}</span>
+                    )}
+                  </li>
                 ))}
               </ul>
             </div>
@@ -225,7 +247,7 @@ export function EcomFooter() {
                 { name: "Dana", icon: Smartphone },
               ].map(({ name, icon: Icon }) => (
                 <div key={name} className="flex flex-col items-center gap-1 rounded-lg bg-slate-800 px-2 py-2">
-                  <Icon className="h-4 w-4 text-amber-400" />
+                  <Icon className="h-4 w-4 text-emerald-400" />
                   <span className="text-[9px] text-slate-400">{name}</span>
                 </div>
               ))}
@@ -241,9 +263,10 @@ export function EcomFooter() {
           </div>
         </div>
         <div className="mt-12 pt-6 border-t border-slate-800 text-center text-sm text-slate-500">
-          &copy; {new Date().getFullYear()} UrbanStyle. All rights reserved. | 100% Original | 30 Hari Retur
+          &copy; {new Date().getFullYear()} UrbanStyle. Semua hak dilindungi. | 100% Original | 30 Hari Retur
         </div>
       </div>
     </footer>
   );
 }
+
