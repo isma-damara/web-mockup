@@ -18,5 +18,5 @@ function fixDependencies(pkgPath) {
   }
 }
 
-const apps = ['home', 'company-profile', 'ecommerce', 'government', 'catalog'];
+const apps = ['main', 'company-profile', 'ecommerce', 'government', 'catalog'];
 apps.forEach(app => fixDependencies(`apps/${app}/package.json`));
