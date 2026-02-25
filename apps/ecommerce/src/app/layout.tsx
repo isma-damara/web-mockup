@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "NexaTech — Solusi Teknologi Masa Depan",
+  title: "NexaTech ? Solusi Teknologi Masa Depan",
   description:
     "NexaTech adalah perusahaan teknologi inovatif yang menyediakan solusi digital terdepan. Web Development, Mobile App, Cloud Computing, AI & Machine Learning.",
   keywords: [
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "machine learning",
   ],
   openGraph: {
-    title: "NexaTech — Solusi Teknologi Masa Depan",
+    title: "NexaTech ? Solusi Teknologi Masa Depan",
     description:
       "Perusahaan teknologi inovatif yang menghadirkan solusi digital terdepan untuk bisnis Anda.",
     type: "website",

@@ -146,7 +146,7 @@ export default function ProductDetail({
             <div className="mb-6">
               <div className="text-sm font-medium text-slate-700 mb-2">Jumlah:</div>
               <div className="flex items-center gap-3">
-                <button onClick={() => setQty(Math.max(1, qty - 1))} className="h-8 w-8 rounded-lg border border-slate-200 flex items-center justify-center hover:bg-slate-50 text-sm">−</button>
+                <button onClick={() => setQty(Math.max(1, qty - 1))} className="h-8 w-8 rounded-lg border border-slate-200 flex items-center justify-center hover:bg-slate-50 text-sm">-</button>
                 <span className="text-sm font-semibold w-8 text-center">{qty}</span>
                 <button onClick={() => setQty(qty + 1)} className="h-8 w-8 rounded-lg border border-slate-200 flex items-center justify-center hover:bg-slate-50 text-sm">+</button>
               </div>
@@ -183,7 +183,7 @@ export default function ProductDetail({
               )}
               {tab === "reviews" && (
                 <div className="space-y-2">
-                  <div className="text-lg font-bold text-slate-800">⭐ {product.rating}/5</div>
+                  <div className="text-lg font-bold text-slate-800">* {product.rating}/5</div>
                   <p className="text-xs text-slate-400">Berdasarkan {product.reviews} ulasan dari pelanggan terverifikasi.</p>
                 </div>
               )}
@@ -251,7 +251,7 @@ export default function ProductDetail({
                   </div>
                 ))}
               </div>
-              <p className="mt-4 text-xs text-slate-400">* Ukuran dalam cm. Bisa berbeda ±1-2cm.</p>
+              <p className="mt-4 text-xs text-slate-400">* Ukuran dalam cm. Bisa berbeda +/-1-2cm.</p>
             </div>
           </div>
         )}
@@ -259,3 +259,4 @@ export default function ProductDetail({
     </div>
   );
 }
+
