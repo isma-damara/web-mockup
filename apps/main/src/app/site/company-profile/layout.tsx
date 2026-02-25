@@ -10,5 +10,5 @@ export const metadata: Metadata = {
 export default function CompanyProfileLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  return <MockSiteShell slug="company-profile">{children}</MockSiteShell>;
+  return <MockSiteShell>{children}</MockSiteShell>;
 }

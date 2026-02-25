@@ -10,5 +10,5 @@ export const metadata: Metadata = {
 export default function GovernmentLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  return <MockSiteShell slug="government">{children}</MockSiteShell>;
+  return <MockSiteShell>{children}</MockSiteShell>;
 }

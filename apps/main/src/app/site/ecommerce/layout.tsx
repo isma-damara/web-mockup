@@ -10,5 +10,5 @@ export const metadata: Metadata = {
 export default function EcommerceLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  return <MockSiteShell slug="ecommerce">{children}</MockSiteShell>;
+  return <MockSiteShell>{children}</MockSiteShell>;
 }
