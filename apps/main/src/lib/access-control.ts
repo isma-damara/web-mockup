@@ -8,6 +8,8 @@ export const PROTECTED_SITE_SLUGS = [
   "catalog",
 ] as const;
 
+export const SITE_PATH_PREFIX = "/site";
+
 export type ProtectedSiteSlug = (typeof PROTECTED_SITE_SLUGS)[number];
 
 type ClientShareTarget = {
@@ -375,12 +377,21 @@ export async function createClientSessionCookieValue(
 
 export function isProtectedSitePath(pathname: string) {
   return PROTECTED_SITE_SLUGS.some(
-    (slug) => pathname === `/${slug}` || pathname.startsWith(`/${slug}/`),
+    (slug) =>
+      pathname === `/${slug}` ||
+      pathname.startsWith(`/${slug}/`) ||
+      pathname === `${SITE_PATH_PREFIX}/${slug}` ||
+      pathname.startsWith(`${SITE_PATH_PREFIX}/${slug}/`),
   );
 }
 
 export function isAllowedForClient(pathname: string, site: ProtectedSiteSlug) {
-  return pathname === `/${site}` || pathname.startsWith(`/${site}/`);
+  return (
+    pathname === `/${site}` ||
+    pathname.startsWith(`/${site}/`) ||
+    pathname === `${SITE_PATH_PREFIX}/${site}` ||
+    pathname.startsWith(`${SITE_PATH_PREFIX}/${site}/`)
+  );
 }
 
 export function normalizeInternalPath(pathname: string | null | undefined) {
@@ -421,6 +432,7 @@ export async function resolveViewerSessionFromCookies(input: {
 
 export function isPublicAccessUtilityPath(pathname: string) {
   return (
+    pathname === "/" ||
     pathname === "/access-denied" ||
     pathname === "/admin-access" ||
     pathname === "/logout" ||

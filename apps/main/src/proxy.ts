@@ -3,11 +3,24 @@ import { NextResponse } from "next/server";
 import {
   ADMIN_COOKIE_NAME,
   CLIENT_COOKIE_NAME,
+  PROTECTED_SITE_SLUGS,
+  SITE_PATH_PREFIX,
   isAllowedForClient,
   isProtectedSitePath,
   isPublicAccessUtilityPath,
   resolveViewerSessionFromCookies,
 } from "@/lib/access-control";
+
+function getLegacySiteMatch(pathname: string) {
+  for (const slug of PROTECTED_SITE_SLUGS) {
+    const legacyPrefix = `/${slug}`;
+    if (pathname === legacyPrefix || pathname.startsWith(`${legacyPrefix}/`)) {
+      const rest = pathname.slice(legacyPrefix.length);
+      return { slug, rest };
+    }
+  }
+  return null;
+}
 
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -22,12 +35,26 @@ export async function proxy(request: NextRequest) {
   });
 
   if (viewer.role === "admin") {
+    const legacyMatch = getLegacySiteMatch(pathname);
+    if (legacyMatch) {
+      return NextResponse.redirect(
+        new URL(`${SITE_PATH_PREFIX}/${legacyMatch.slug}${legacyMatch.rest}`, request.url),
+      );
+    }
+
     return NextResponse.next();
   }
 
   if (viewer.role === "client") {
+    const legacyMatch = getLegacySiteMatch(pathname);
+    if (legacyMatch && legacyMatch.slug === viewer.site) {
+      return NextResponse.redirect(
+        new URL(`${SITE_PATH_PREFIX}/${legacyMatch.slug}${legacyMatch.rest}`, request.url),
+      );
+    }
+
     if (pathname === "/") {
-      return NextResponse.redirect(new URL(`/${viewer.site}`, request.url));
+      return NextResponse.redirect(new URL(`${SITE_PATH_PREFIX}/${viewer.site}`, request.url));
     }
 
     if (isAllowedForClient(pathname, viewer.site)) {
@@ -35,7 +62,7 @@ export async function proxy(request: NextRequest) {
     }
 
     if (isProtectedSitePath(pathname)) {
-      return NextResponse.redirect(new URL(`/${viewer.site}`, request.url));
+      return NextResponse.redirect(new URL(`${SITE_PATH_PREFIX}/${viewer.site}`, request.url));
     }
 
     return NextResponse.next();

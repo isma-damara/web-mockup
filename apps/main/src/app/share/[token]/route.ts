@@ -30,7 +30,7 @@ export async function GET(request: NextRequest, context: RouteContext) {
     return NextResponse.redirect(new URL("/access-denied", request.url));
   }
 
-  const response = NextResponse.redirect(new URL(`/${target.site}`, request.url));
+  const response = NextResponse.redirect(new URL(`/site/${target.site}`, request.url));
   response.cookies.set(CLIENT_COOKIE_NAME, await createClientSessionCookieValue(target), {
     ...cookieOptions(),
     maxAge: getClientSessionMaxAgeSeconds(target),

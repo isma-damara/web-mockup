@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "../../../../ecommerce/src/app/globals.css";
+import "../../../../../ecommerce/src/app/globals.css";
 import MockSiteShell from "@/components/mock-site-shell";
 
 export const metadata: Metadata = {

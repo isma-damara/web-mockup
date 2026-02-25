@@ -52,7 +52,7 @@ export default async function MockSiteShell({ slug, children }: MockSiteShellPro
               {mockSites.map((item) => (
                 <Link
                   key={item.slug}
-                  href={`/${item.slug}`}
+                  href={`/site/${item.slug}`}
                   className={`inline-flex items-center gap-1 rounded-full px-3 py-1.5 transition-colors ${
                     item.slug === slug
                       ? "bg-white text-black"

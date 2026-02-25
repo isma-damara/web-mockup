@@ -23,7 +23,7 @@ export default function PortalPage() {
           {mockSites.map((app, idx) => (
             <Link
               key={app.slug}
-              href={`/${app.slug}`}
+              href={`/site/${app.slug}`}
               className="group relative flex flex-col items-center text-center rounded-3xl border border-white/5 bg-zinc-900/40 p-8 transition-all duration-500 hover:bg-zinc-900/60 hover:border-white/10 hover:-translate-y-2 hover:shadow-2xl backdrop-blur-md overflow-hidden animate-fade-up"
               style={{ animationDelay: `${idx * 100}ms` }}
             >
@@ -46,7 +46,7 @@ export default function PortalPage() {
               </p>
 
               <p className="mt-2 text-[11px] uppercase tracking-[0.18em] text-zinc-600">
-                /{app.slug}
+                /site/{app.slug}
               </p>
 
               <div className="mt-8 flex items-center justify-center h-8 w-8 rounded-full bg-white/5 text-zinc-500 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:bg-white/10 group-hover:text-white">
