@@ -5,6 +5,7 @@ import Link from "next/link";
 import {
   Search, Menu, X, ChevronDown, Phone, Mail, Clock, Landmark,
 } from "lucide-react";
+import { useSiteBase, withSiteBase } from "./useSiteBase";
 
 const navItems = [
   { label: "Beranda", href: "#hero" },
@@ -38,6 +39,7 @@ export default function GovNav() {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const dropTimer = useRef<NodeJS.Timeout | null>(null);
+  const siteBase = useSiteBase();
 
   return (
     <>
@@ -64,7 +66,7 @@ export default function GovNav() {
       {/* Main Nav */}
       <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-lg border-b border-emerald-100 shadow-sm">
         <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <Link href="/government" className="flex items-center gap-3">
+          <Link href={withSiteBase("/", siteBase)} className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-emerald-600 to-teal-600 shadow-md">
               <Landmark className="h-5 w-5 text-white" />
             </div>

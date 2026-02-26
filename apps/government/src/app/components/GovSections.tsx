@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, FormEvent } from "react";
+import Link from "next/link";
 import {
   MapPin, Phone, Mail, Clock, Newspaper, Calendar, Building, Eye, TrendingUp, Award,
   CheckCircle, Send, FileText, Download, Image, Play, ChevronRight, Landmark,
@@ -8,6 +9,7 @@ import {
   Mountain, Waves, Palmtree, Map, Globe,
 } from "lucide-react";
 import { stats, agenda, touristSpots, galleryItems, ppidDocs } from "./GovData";
+import { useSiteBase, withSiteBase } from "./useSiteBase";
 
 /* ---- ANIMATED STATS ---- */
 export function AnimatedStats() {
@@ -369,6 +371,7 @@ export function MapSocialSection() {
 
 /* ---- ENHANCED FOOTER ---- */
 export function GovFooter() {
+  const siteBase = useSiteBase();
   return (
     <footer className="bg-emerald-900 text-emerald-200 py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -411,7 +414,25 @@ export function GovFooter() {
           ].map((col) => (
             <div key={col.title}>
               <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-white">{col.title}</h4>
-              <ul className="space-y-2">{col.links.map((l) => (<li key={l}><span className="text-sm text-emerald-300 hover:text-white cursor-pointer transition-colors">{l}</span></li>))}</ul>
+              <ul className="space-y-2">
+                {col.links.map((l) => (
+                  <li key={l}>
+                    {col.title === "Layanan" ? (
+                      <Link href={withSiteBase(l === "Pengaduan" ? "/pengaduan" : "/layanan", siteBase)} className="text-sm text-emerald-300 hover:text-white transition-colors">
+                        {l}
+                      </Link>
+                    ) : col.title === "Tentang" ? (
+                      <Link href={withSiteBase("/profil", siteBase)} className="text-sm text-emerald-300 hover:text-white transition-colors">
+                        {l}
+                      </Link>
+                    ) : (
+                      <Link href={withSiteBase(l === "PPID" ? "/ppid" : "/ppid", siteBase)} className="text-sm text-emerald-300 hover:text-white transition-colors">
+                        {l}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>

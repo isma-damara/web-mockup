@@ -6,6 +6,7 @@ import {
   Search, Heart, Sparkles, ChevronDown, X, Menu, Trash2, Star,
 } from "lucide-react";
 import { products, formatPrice } from "./CatalogData";
+import { useSiteBase, withSiteBase } from "./useSiteBase";
 
 interface Props {
   liked: number[];
@@ -33,6 +34,7 @@ export default function CatalogNav({ liked, toggleLike, searchOpen, setSearchOpe
   const [searchQuery, setSearchQuery] = useState("");
   const [wishlistOpen, setWishlistOpen] = useState(false);
   const dropTimer = useRef<NodeJS.Timeout | null>(null);
+  const siteBase = useSiteBase();
 
   const suggestions = searchQuery.length > 1
     ? products.filter((p) => p.name.toLowerCase().includes(searchQuery.toLowerCase())).slice(0, 5)
@@ -43,7 +45,7 @@ export default function CatalogNav({ liked, toggleLike, searchOpen, setSearchOpe
   return (
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-rose-100 shadow-sm">
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/catalog" className="flex items-center gap-2">
+        <Link href={withSiteBase("/", siteBase)} className="flex items-center gap-2">
           <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-rose-500 to-pink-500">
             <Sparkles className="h-4 w-4 text-white" />
           </div>
@@ -81,7 +83,16 @@ export default function CatalogNav({ liked, toggleLike, searchOpen, setSearchOpe
                     {item.sub.map((s) => (
                       <a
                         key={s}
-                        href={s === "Store Locator" || s === "Contact Us" ? "#footer" : s === "Our Story" ? "#brand" : "#products"}
+                        href={withSiteBase(
+                          s === "Store Locator"
+                            ? "/contact"
+                            : s === "Contact Us"
+                              ? "/help/hubungi-kami"
+                              : s === "Our Story"
+                                ? "/brand"
+                                : "/products",
+                          siteBase
+                        )}
                         className="block rounded-lg px-3.5 py-2 text-sm text-slate-600 hover:bg-rose-50 hover:text-rose-600 transition-colors"
                         onClick={() => setOpenDrop(null)}
                       >
@@ -186,8 +197,23 @@ export default function CatalogNav({ liked, toggleLike, searchOpen, setSearchOpe
                 {item.sub && mobileExpanded === item.label && (
                   <div className="ml-4 border-l-2 border-rose-100 pl-3 pb-2">
                     {item.sub.map((s) => (
-                      <a key={s} href={s === "Store Locator" || s === "Contact Us" ? "#footer" : "#products"} onClick={() => setMobileOpen(false)}
-                        className="block py-2 text-sm text-slate-500 hover:text-rose-600">{s}</a>
+                      <a
+                        key={s}
+                        href={withSiteBase(
+                          s === "Store Locator"
+                            ? "/contact"
+                            : s === "Contact Us"
+                              ? "/help/hubungi-kami"
+                              : s === "Our Story"
+                                ? "/brand"
+                                : "/products",
+                          siteBase
+                        )}
+                        onClick={() => setMobileOpen(false)}
+                        className="block py-2 text-sm text-slate-500 hover:text-rose-600"
+                      >
+                        {s}
+                      </a>
                     ))}
                   </div>
                 )}
