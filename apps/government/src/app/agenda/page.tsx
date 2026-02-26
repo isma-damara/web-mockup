@@ -61,7 +61,7 @@ const agendaItems = [
 
 export default function AgendaPage() {
   return (
-    <div className="min-h-screen bg-[var(--gov-cream)] text-[var(--gov-text)]">
+    <div className="min-h-screen bg-(--gov-cream) text-(--gov-text)">
       <GovNav />
       <Breadcrumbs items={[{ label: "Beranda", href: "/" }, { label: "Agenda Kota" }]} />
       <PageHero
@@ -78,13 +78,13 @@ export default function AgendaPage() {
         <div className="grid gap-4 md:grid-cols-2">
           {agendaItems.map((item) => (
             <div key={item.title} className="card-base flex gap-4 px-4 py-4">
-              <div className="flex h-14 w-12 flex-col items-center justify-center rounded-xl bg-[var(--gov-navy)] text-white">
+              <div className="flex h-14 w-12 flex-col items-center justify-center rounded-xl bg-(--gov-navy) text-white">
                 <div className="font-display text-[20px] font-bold">{item.day}</div>
-                <div className="text-[10px] font-semibold uppercase text-[var(--gov-gold-light)]">{item.month}</div>
+                <div className="text-[10px] font-semibold uppercase text-(--gov-gold-light)]">{item.month}</div>
               </div>
               <div className="flex-1">
-                <div className="text-[14px] font-semibold text-[var(--gov-navy)]">{item.title}</div>
-                <div className="mt-1 flex flex-wrap gap-3 text-[12px] text-[var(--gov-slate)]">
+                <div className="text-[14px] font-semibold text-(--gov-navy)">{item.title}</div>
+                <div className="mt-1 flex flex-wrap gap-3 text-[12px] text-(--gov-slate)">
                   <span>⏰ {item.time}</span>
                   <span>📍 {item.place}</span>
                   <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-semibold ${item.badgeClass}`}>
