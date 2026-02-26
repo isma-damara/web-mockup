@@ -1,2 +1,2 @@
-export { default } from "../../../../../../government/src/app/berita/page";
+﻿export { default } from "../../../../../../government/src/app/berita/page";
 

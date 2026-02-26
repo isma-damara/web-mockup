@@ -1,0 +1,669 @@
+{
+  "heroCards": [
+    {
+      "title": "Perizinan Online",
+      "desc": "Ajukan izin usaha & bangunan kapan saja",
+      "icon": "\ud83d\udcdd",
+      "color": "bg-[rgba(201,151,43,0.2)]",
+      "href": "/site/government/layanan#perizinan"
+    },
+    {
+      "title": "Administrasi Kependudukan",
+      "desc": "KTP, KK, Akta Kelahiran & dokumen lainnya",
+      "icon": "\ud83e\udeaa",
+      "color": "bg-[rgba(26,86,219,0.2)]",
+      "href": "/site/government/layanan#kependudukan"
+    },
+    {
+      "title": "Layanan Pengaduan",
+      "desc": "Laporkan masalah di sekitar Anda",
+      "icon": "\ud83d\udce3",
+      "color": "bg-[rgba(220,38,38,0.2)]",
+      "href": "/site/government/pengaduan#form"
+    },
+    {
+      "title": "Transparansi APBD",
+      "desc": "Lihat anggaran dan realisasi belanja daerah",
+      "icon": "\ud83d\udcb0",
+      "color": "bg-[rgba(22,163,74,0.2)]",
+      "href": "/site/government/ppid#apbd"
+    }
+  ],
+  "quickAccess": [
+    {
+      "label": "Perizinan Online",
+      "icon": "\ud83d\udcdd",
+      "href": "/site/government/layanan#perizinan"
+    },
+    {
+      "label": "Pengaduan Masyarakat",
+      "icon": "\ud83d\udce3",
+      "href": "/site/government/pengaduan#form"
+    },
+    {
+      "label": "Kependudukan",
+      "icon": "\ud83e\udeaa",
+      "href": "/site/government/layanan#kependudukan"
+    },
+    {
+      "label": "Informasi Kesehatan",
+      "icon": "\ud83c\udfe5",
+      "href": "/site/government/layanan#kesehatan"
+    },
+    {
+      "label": "Pendidikan",
+      "icon": "\ud83c\udf93",
+      "href": "/site/government/layanan#pendidikan"
+    },
+    {
+      "label": "Pariwisata",
+      "icon": "\ud83c\udf34",
+      "href": "/site/government/pariwisata#destinasi"
+    }
+  ],
+  "beritaHighlight": [
+    {
+      "title": "Walikota Resmikan Gedung Pelayanan Terpadu Satu Pintu Baru",
+      "icon": "\ud83c\udfdb\ufe0f",
+      "badge": "Pemerintahan",
+      "date": "25 Jan 2025",
+      "color": "bg-[var(--gov-blue)]"
+    },
+    {
+      "title": "Program Tanam 10.000 Pohon Dukung Kota Contoh Menuju Kota Hijau",
+      "icon": "\ud83c\udf31",
+      "badge": "Lingkungan",
+      "date": "22 Jan 2025",
+      "color": "bg-[var(--gov-green)]"
+    },
+    {
+      "title": "Raih Prestasi! Pelajar Kota Contoh Juara Olimpiade Sains Nasional",
+      "icon": "\ud83d\udcda",
+      "badge": "Pendidikan",
+      "date": "20 Jan 2025",
+      "color": "bg-[var(--gov-gold)]"
+    }
+  ],
+  "agendaItems": [
+    {
+      "day": "30",
+      "month": "Jan",
+      "title": "Rapat Koordinasi Pembangunan Infrastruktur Q1 2025",
+      "time": "09.00 WIB",
+      "place": "Balaikota Lt.3",
+      "badge": "Tertutup"
+    },
+    {
+      "day": "01",
+      "month": "Feb",
+      "title": "Musrenbang Kecamatan Tahun Anggaran 2026",
+      "time": "08.00 WIB",
+      "place": "12 Kecamatan",
+      "badge": "Terbuka"
+    },
+    {
+      "day": "05",
+      "month": "Feb",
+      "title": "Festival Kuliner & Budaya Nusantara 2025",
+      "time": "10.00 WIB",
+      "place": "Alun-alun Kota",
+      "badge": "Terbuka"
+    },
+    {
+      "day": "08",
+      "month": "Feb",
+      "title": "Rapat Paripurna DPRD — Pembahasan Ranperda 2025",
+      "time": "13.00 WIB",
+      "place": "Gedung DPRD",
+      "badge": "Livestream"
+    },
+    {
+      "day": "12",
+      "month": "Feb",
+      "title": "Vaksinasi Massal Gratis untuk Seluruh Warga",
+      "time": "08.00 WIB",
+      "place": "GOR Kota Contoh",
+      "badge": "Terbuka"
+    },
+    {
+      "day": "17",
+      "month": "Feb",
+      "title": "Seminar Investasi & Peluang Bisnis Kota Contoh 2025",
+      "time": "09.00 WIB",
+      "place": "Hotel Grand Contoh",
+      "badge": "Daftar"
+    }
+  ],
+  "stats": [
+    {
+      "label": "Total Penduduk",
+      "value": "1.248.762",
+      "icon": "\ud83d\udc65",
+      "color": "bg-[rgba(26,86,219,0.1)]"
+    },
+    {
+      "label": "OPD/SKPD Aktif",
+      "value": "38",
+      "icon": "\ud83c\udfe2",
+      "color": "bg-[rgba(201,151,43,0.1)]"
+    },
+    {
+      "label": "Izin Terbit 2024",
+      "value": "12.450",
+      "icon": "\ud83d\udcdd",
+      "color": "bg-[rgba(22,163,74,0.1)]"
+    },
+    {
+      "label": "Fasilitas Kesehatan",
+      "value": "127",
+      "icon": "\ud83c\udfe5",
+      "color": "bg-[rgba(13,148,136,0.1)]"
+    }
+  ],
+  "wisataSpots": [
+    {
+      "name": "Taman Alam Kota Contoh",
+      "type": "Alam",
+      "icon": "\ud83c\udfde\ufe0f",
+      "rating": "4.8",
+      "price": "Gratis",
+      "color": "bg-gradient-to-br from-[#064e3b] to-[#0d9488]"
+    },
+    {
+      "name": "Museum Kota Contoh",
+      "type": "Sejarah",
+      "icon": "\ud83c\udfdb\ufe0f",
+      "rating": "4.9",
+      "price": "Rp 15.000",
+      "color": "bg-gradient-to-br from-[#1e1b4b] to-[#312e81]"
+    },
+    {
+      "name": "Sanggar Budaya Nusantara",
+      "type": "Budaya",
+      "icon": "\ud83c\udfad",
+      "rating": "4.7",
+      "price": "Rp 20.000",
+      "color": "bg-gradient-to-br from-[#7c2d12] to-[#c2410c]"
+    },
+    {
+      "name": "Pasar Kuliner Tradisional",
+      "type": "Kuliner",
+      "icon": "\ud83c\udf5c",
+      "rating": "4.6",
+      "price": "Gratis",
+      "color": "bg-gradient-to-br from-[#713f12] to-[#a16207]"
+    },
+    {
+      "name": "Kebun Raya Kota Contoh",
+      "type": "Alam",
+      "icon": "\ud83c\udf3f",
+      "rating": "4.5",
+      "price": "Rp 10.000",
+      "color": "bg-gradient-to-br from-[#166534] to-[#15803d]"
+    },
+    {
+      "name": "Taman Hiburan Kota",
+      "type": "Hiburan",
+      "icon": "\ud83c\udfa1",
+      "rating": "4.4",
+      "price": "Rp 35.000",
+      "color": "bg-gradient-to-br from-[#1e3a5f] to-[#1e40af]"
+    }
+  ],
+  "beritaCards": [
+    {
+      "title": "Program Tanam 10.000 Pohon Dukung Kota Contoh Menuju Kota Hijau 2030",
+      "badge": "Lingkungan",
+      "date": "22 Jan 2025",
+      "icon": "\ud83c\udf31",
+      "color": "bg-[var(--gov-green)]"
+    },
+    {
+      "title": "Pelajar Kota Contoh Raih Juara 1 Olimpiade Sains Nasional 2025",
+      "badge": "Pendidikan",
+      "date": "20 Jan 2025",
+      "icon": "\ud83d\udcda",
+      "color": "bg-[var(--gov-gold)]"
+    },
+    {
+      "title": "Proyek Jalan Layang Bypass Kota Contoh Ditargetkan Selesai 2026",
+      "badge": "Infrastruktur",
+      "date": "18 Jan 2025",
+      "icon": "\ud83c\udfd7\ufe0f",
+      "color": "bg-[var(--gov-teal)]"
+    }
+  ],
+  "beritaCategories": [
+    "Semua",
+    "Pemerintahan",
+    "Pembangunan",
+    "Ekonomi",
+    "Lingkungan",
+    "Pendidikan",
+    "Kesehatan"
+  ],
+  "pariwisataCategories": [
+    "Semua",
+    "Alam",
+    "Budaya",
+    "Kuliner",
+    "Sejarah",
+    "Belanja"
+  ],
+  "ppidCategories": [
+    "Semua",
+    "Keuangan",
+    "Perencanaan",
+    "Pengadaan",
+    "Kepegawaian"
+  ],
+  "opdCategories": [
+    "Semua",
+    "Dinas",
+    "Badan",
+    "Sekretariat",
+    "Kantor",
+    "Kecamatan"
+  ],
+  "peraturanCategories": [
+    "Semua",
+    "Perda",
+    "Perwali",
+    "SK Walikota"
+  ],
+  "layananPerizinan": [
+    {
+      "icon": "\ud83c\udfd7\ufe0f",
+      "title": "Izin Mendirikan Bangunan (IMB)",
+      "time": "?14 hari kerja",
+      "highlight": true
+    },
+    {
+      "icon": "\ud83c\udfea",
+      "title": "Izin Usaha Mikro Kecil (IUMK)",
+      "time": "?3 hari kerja"
+    },
+    {
+      "icon": "\ud83c\udf3f",
+      "title": "Izin Lingkungan (SPPL/UKL-UPL)",
+      "time": "?30 hari kerja"
+    },
+    {
+      "icon": "\ud83c\udf7d\ufe0f",
+      "title": "Izin Usaha Restoran & Rumah Makan",
+      "time": "?7 hari kerja"
+    }
+  ],
+  "kependudukanServices": [
+    {
+      "icon": "\ud83e\udeaa",
+      "title": "KTP Elektronik (KTP-el)",
+      "desc": "Perekaman, penggantian, dan perubahan data."
+    },
+    {
+      "icon": "\ud83d\udccb",
+      "title": "Kartu Keluarga (KK)",
+      "desc": "Penerbitan baru, perubahan data, penambahan anggota."
+    },
+    {
+      "icon": "\ud83d\udc76",
+      "title": "Akta Kelahiran",
+      "desc": "Penerbitan akta kelahiran dan koreksi data."
+    },
+    {
+      "icon": "\ud83d\udcdc",
+      "title": "Akta Kematian",
+      "desc": "Penerbitan akta kematian dan surat keterangan."
+    },
+    {
+      "icon": "\ud83d\udc8d",
+      "title": "Akta Perkawinan",
+      "desc": "Pencatatan dan penerbitan akta perkawinan."
+    },
+    {
+      "icon": "\ud83d\udd00",
+      "title": "Pindah Datang",
+      "desc": "Layanan pindah domisili dalam/luar kota."
+    }
+  ],
+  "kesehatanFaskes": [
+    {
+      "name": "RSUD Kota Contoh",
+      "type": "Rumah Sakit Pemerintah ? Kelas B",
+      "meta": [
+        "\ud83d\udccd Jl. Kesehatan No. 1, Kec. Pusat",
+        "\u260e (021) 123-0100",
+        "\ud83d\udecf\ufe0f 350 Tempat Tidur"
+      ]
+    },
+    {
+      "name": "Puskesmas Kec. Pusat",
+      "type": "Puskesmas BLUD",
+      "meta": [
+        "\ud83d\udccd Jl. Melati No. 12, Kec. Pusat",
+        "\u260e (021) 123-0200",
+        "\u23f0 Senin?Sabtu 08.00?14.00"
+      ]
+    }
+  ],
+  "pendidikanStats": [
+    {
+      "icon": "\ud83c\udfeb",
+      "value": "287",
+      "label": "Total Sekolah",
+      "color": "bg-[rgba(201,151,43,0.1)]"
+    },
+    {
+      "icon": "\ud83d\udc68\u200d\ud83c\udf93",
+      "value": "198.432",
+      "label": "Peserta Didik",
+      "color": "bg-[rgba(26,86,219,0.1)]"
+    },
+    {
+      "icon": "\ud83d\udc68\u200d\ud83c\udfeb",
+      "value": "12.840",
+      "label": "Guru",
+      "color": "bg-[rgba(22,163,74,0.1)]"
+    },
+    {
+      "icon": "\ud83d\udcd6",
+      "value": "98.1%",
+      "label": "Angka Melek Huruf",
+      "color": "bg-[rgba(13,148,136,0.1)]"
+    }
+  ],
+  "pendidikanSchools": [
+    {
+      "name": "SDN Kota Contoh 01",
+      "type": "Sekolah Dasar Negeri ? Akreditasi A",
+      "stats": [
+        "840 Siswa",
+        "42 Guru",
+        "21 Kelas"
+      ]
+    },
+    {
+      "name": "SMPN 1 Kota Contoh",
+      "type": "SMP Negeri ? Akreditasi A",
+      "stats": [
+        "1.240 Siswa",
+        "68 Guru",
+        "32 Kelas"
+      ]
+    }
+  ],
+  "pengaduanStats": [
+    {
+      "icon": "\ud83d\udce3",
+      "value": "2.841",
+      "label": "Pengaduan Masuk 2024"
+    },
+    {
+      "icon": "\u2705",
+      "value": "94.2%",
+      "label": "Terselesaikan"
+    }
+  ],
+  "kontakInfo": [
+    {
+      "label": "Alamat Kantor",
+      "value": "Balaikota Kota Contoh",
+      "sub": "Jl. Merdeka No. 1, Kec. Pusat, Kota Contoh 12345",
+      "icon": "\ud83c\udfdb\ufe0f"
+    },
+    {
+      "label": "Telepon",
+      "value": "(021) 123-4567",
+      "sub": "Senin?Jumat, 08.00?16.00 WIB",
+      "icon": "\u260e\ufe0f"
+    },
+    {
+      "label": "Email",
+      "value": "info@kotacontoh.go.id",
+      "sub": "Balasan dalam 1?24 jam kerja",
+      "icon": "\u2709\ufe0f"
+    },
+    {
+      "label": "Fax",
+      "value": "(021) 123-4568",
+      "sub": "Dokumen resmi & korespondensi",
+      "icon": "\ud83d\udce0"
+    }
+  ],
+  "galeriItems": [
+    {
+      "title": "Festival Budaya 2025",
+      "type": "Foto",
+      "icon": "\ud83c\udfad",
+      "color": "from-[var(--gov-navy)] to-[var(--gov-blue)]"
+    },
+    {
+      "title": "Peresmian Taman Kota",
+      "type": "Video",
+      "icon": "\ud83c\udfa5",
+      "color": "from-[#0f766e] to-[#0d9488]"
+    },
+    {
+      "title": "Program Tanam Pohon",
+      "type": "Foto",
+      "icon": "\ud83c\udf31",
+      "color": "from-[#15803d] to-[#22c55e]"
+    },
+    {
+      "title": "Pelayanan Terpadu",
+      "type": "Foto",
+      "icon": "\ud83c\udfdb\ufe0f",
+      "color": "from-[#1e3a8a] to-[#2563eb]"
+    },
+    {
+      "title": "Vaksinasi Massal",
+      "type": "Video",
+      "icon": "\ud83d\udc89",
+      "color": "from-[#be123c] to-[#f43f5e]"
+    },
+    {
+      "title": "Musrenbang Kecamatan",
+      "type": "Foto",
+      "icon": "\ud83d\udde3\ufe0f",
+      "color": "from-[#a16207] to-[#f59e0b]"
+    }
+  ],
+  "sejarahStats": [
+    {
+      "label": "Tahun Berdiri",
+      "value": "1742",
+      "icon": "\ud83d\udcc5"
+    },
+    {
+      "label": "Luas Wilayah",
+      "value": "342 km?",
+      "icon": "\ud83d\udcd0"
+    },
+    {
+      "label": "Kecamatan",
+      "value": "12",
+      "icon": "\ud83c\udfd8\ufe0f"
+    }
+  ],
+  "misiItems": [
+    "Mewujudkan tata kelola pemerintahan yang bersih, akuntabel, dan berorientasi pada pelayanan prima.",
+    "Meningkatkan kualitas sumber daya manusia yang cerdas, berakhlak, dan berdaya saing.",
+    "Mengembangkan perekonomian daerah yang inklusif dan berkelanjutan berbasis potensi lokal.",
+    "Membangun infrastruktur kota yang berkualitas, merata, dan berwawasan lingkungan.",
+    "Meningkatkan kualitas hidup masyarakat melalui jaminan sosial, kesehatan, dan ketahanan pangan.",
+    "Melestarikan dan mengembangkan kebudayaan daerah sebagai identitas dan daya tarik kota.",
+    "Meningkatkan keamanan, ketertiban, dan ketenteraman masyarakat yang kondusif."
+  ],
+  "lambangItems": [
+    {
+      "title": "Bintang Emas",
+      "desc": "Melambangkan Ketuhanan Yang Maha Esa dan cita-cita luhur masyarakat."
+    },
+    {
+      "title": "Pohon Beringin",
+      "desc": "Simbol keteduhan, perlindungan, dan persatuan seluruh warga."
+    },
+    {
+      "title": "Ombak Biru",
+      "desc": "Mencerminkan dinamika dan semangat yang terus berkembang."
+    },
+    {
+      "title": "Padi & Kapas",
+      "desc": "Kemakmuran dan kesejahteraan masyarakat yang merata."
+    },
+    {
+      "title": "Warna Merah-Putih",
+      "desc": "Jiwa nasionalisme dan semangat kebangsaan yang tinggi."
+    }
+  ],
+  "pimpinanEksekutif": [
+    {
+      "name": "Drs. H. Ahmad Wijaya, M.Si",
+      "role": "Walikota Kota Contoh",
+      "period": "\ud83d\udcc5 2021?2026",
+      "icon": "\ud83e\uddd1\u200d\ud83d\udcbc"
+    },
+    {
+      "name": "Hj. Sari Rahayu, S.E., M.M",
+      "role": "Wakil Walikota",
+      "period": "\ud83d\udcc5 2021?2026",
+      "icon": "\ud83d\udc69\u200d\ud83d\udcbc"
+    },
+    {
+      "name": "Dr. Bambang Sutrisno, M.Hum",
+      "role": "Sekretaris Daerah",
+      "period": "\ud83d\udcc5 2022?Sekarang",
+      "icon": "\ud83e\uddd1\u200d\u2696\ufe0f"
+    }
+  ],
+  "pimpinanLegislatif": [
+    {
+      "name": "H. Rahmat Hidayat, S.H",
+      "role": "Ketua DPRD",
+      "period": "\ud83d\udcc5 2024?2029",
+      "icon": "\ud83e\uddd1\u200d\ud83d\udcbc"
+    },
+    {
+      "name": "Ir. Dewi Kusuma, M.T",
+      "role": "Wakil Ketua DPRD I",
+      "period": "\ud83d\udcc5 2024?2029",
+      "icon": "\ud83d\udc69\u200d\ud83d\udcbc"
+    },
+    {
+      "name": "Drs. Eko Prasetyo",
+      "role": "Wakil Ketua DPRD II",
+      "period": "\ud83d\udcc5 2024?2029",
+      "icon": "\ud83e\uddd1\u200d\ud83d\udcbc"
+    }
+  ],
+  "opdList": [
+    {
+      "name": "Sekretariat Daerah Kota Contoh",
+      "type": "Sekretariat",
+      "head": "Dr. Bambang Sutrisno, M.Hum",
+      "icon": "\ud83c\udfdb\ufe0f"
+    },
+    {
+      "name": "Dinas Pendidikan dan Kebudayaan",
+      "type": "Dinas",
+      "head": "Dr. Hendra Putra, M.Pd",
+      "icon": "\ud83d\udccb"
+    },
+    {
+      "name": "Dinas Kesehatan",
+      "type": "Dinas",
+      "head": "dr. Ratna Dewi, Sp.A",
+      "icon": "\ud83c\udfe5"
+    },
+    {
+      "name": "Dinas Pekerjaan Umum & PR",
+      "type": "Dinas",
+      "head": "Ir. Yusuf Hakim, M.T",
+      "icon": "\ud83c\udfd7\ufe0f"
+    },
+    {
+      "name": "Satuan Polisi Pamong Praja",
+      "type": "Satuan",
+      "head": "Kol. (Purn) Agus Santoso",
+      "icon": "\ud83d\udc6e"
+    },
+    {
+      "name": "Badan Pengelolaan Keuangan Daerah",
+      "type": "Badan",
+      "head": "Hj. Sri Wahyuni, S.E., M.Ak",
+      "icon": "\ud83d\udcb0"
+    }
+  ],
+  "ppidDocs": [
+    {
+      "name": "Laporan Keuangan Pemerintah Daerah 2024 (Audited)",
+      "meta": "PDF ? 12.4 MB ? Diperbarui: Jan 2025",
+      "icon": "\ud83d\udcd5",
+      "downloadUrl": "/site/government/downloads/ppid/laporan-keuangan-2024.pdf"
+    },
+    {
+      "name": "Data Realisasi APBD 2024 per Triwulan",
+      "meta": "XLSX ? 2.1 MB ? Diperbarui: Jan 2025",
+      "icon": "\ud83d\udcd7",
+      "downloadUrl": "/site/government/downloads/ppid/realisasi-apbd-2024.xlsx"
+    },
+    {
+      "name": "Daftar Pengadaan Barang/Jasa 2025",
+      "meta": "PDF ? 5.8 MB ? Diperbarui: Jan 2025",
+      "icon": "\ud83d\udcd5",
+      "downloadUrl": "/site/government/downloads/ppid/daftar-pengadaan-2025.pdf"
+    },
+    {
+      "name": "Profil Kepegawaian ASN Kota Contoh 2024",
+      "meta": "DOCX ? 3.2 MB ? Diperbarui: Des 2024",
+      "icon": "\ud83d\udcd8",
+      "downloadUrl": "/site/government/downloads/ppid/profil-asn-2024.docx"
+    },
+    {
+      "name": "Standar Pelayanan Minimum (SPM) 2024",
+      "meta": "PDF ? 4.7 MB ? Diperbarui: Jan 2025",
+      "icon": "\ud83d\udcd5",
+      "downloadUrl": "/site/government/downloads/ppid/spm-2024.pdf"
+    }
+  ],
+  "peraturanDocs": [
+    {
+      "number": "No. 1/2025",
+      "title": "Perda tentang Anggaran Pendapatan dan Belanja Daerah Tahun 2025",
+      "type": "Perda",
+      "year": "2025",
+      "downloadUrl": "/site/government/downloads/ppid/perda-apbd-2025.pdf"
+    },
+    {
+      "number": "No. 2/2024",
+      "title": "Perwali tentang Pelayanan Administrasi Kependudukan Secara Online",
+      "type": "Perwali",
+      "year": "2024",
+      "downloadUrl": "/site/government/downloads/ppid/perwali-dukcapil-2024.pdf"
+    },
+    {
+      "number": "No. 5/2024",
+      "title": "Perda tentang Pengelolaan dan Perlindungan Lingkungan Hidup",
+      "type": "Perda",
+      "year": "2024",
+      "downloadUrl": "/site/government/downloads/ppid/perda-lingkungan-2024.pdf"
+    }
+  ],
+  "laporanDocs": [
+    {
+      "name": "Laporan Kinerja Instansi Pemerintah (LKjIP) Kota Contoh Tahun 2024",
+      "meta": "\ud83d\udcc5 Januari 2025 ? PDF ? 4.2 MB ? \u2b07\ufe0f 1.248 Unduhan",
+      "downloadUrl": "/site/government/downloads/ppid/lkjip-2024.pdf"
+    },
+    {
+      "name": "Rencana Pembangunan Jangka Menengah Daerah (RPJMD) 2021?2026",
+      "meta": "\ud83d\udcc5 Maret 2021 ? PDF ? 8.7 MB ? \u2b07\ufe0f 3.456 Unduhan",
+      "downloadUrl": "/site/government/downloads/ppid/rpjmd-2021-2026.pdf"
+    },
+    {
+      "name": "Rencana Kerja Pemerintah Daerah (RKPD) Kota Contoh Tahun 2025",
+      "meta": "\ud83d\udcc5 Juni 2024 ? PDF ? 5.1 MB ? \u2b07\ufe0f 892 Unduhan",
+      "downloadUrl": "/site/government/downloads/ppid/rkpd-2025.pdf"
+    }
+  ]
+}

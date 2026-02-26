@@ -81,6 +81,23 @@
   --sidebar-accent-foreground: oklch(0.35 0.15 264);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.488 0.243 264.376);
+
+  --gov-navy: #0d1b3e;
+  --gov-navy-mid: #152654;
+  --gov-blue: #1a56db;
+  --gov-blue-light: #3b82f6;
+  --gov-gold: #c9972b;
+  --gov-gold-light: #f5c842;
+  --gov-cream: #f9f6f0;
+  --gov-white: #ffffff;
+  --gov-slate: #64748b;
+  --gov-slate-light: #94a3b8;
+  --gov-border: #e2e8f0;
+  --gov-text: #1e293b;
+  --gov-text-muted: #64748b;
+  --gov-red: #dc2626;
+  --gov-green: #16a34a;
+  --gov-teal: #0d9488;
 }
 
 .dark {
@@ -211,6 +228,52 @@
 .animate-gradient {
   background-size: 200% 200%;
   animation: gradient-shift 4s ease infinite;
+}
+
+.section-band {
+  background: var(--gov-white);
+  border-bottom: 1px solid var(--gov-border);
+}
+
+.card-base {
+  background: var(--gov-white);
+  border: 1px solid var(--gov-border);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  background: var(--gov-white);
+  border: 1px solid var(--gov-border);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 999px;
+  border: 1px solid var(--gov-border);
+  transition: all 0.2s ease;
+}
+
+.filter-chip--active {
+  background: var(--gov-blue);
+  color: white;
+  border-color: var(--gov-blue);
+}
+
+.filter-chip--idle {
+  background: var(--gov-cream);
+  color: var(--gov-slate);
 }
 
 .animation-delay-200 { animation-delay: 0.2s; }

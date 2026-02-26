@@ -2,17 +2,16 @@
 
 import { usePathname } from "next/navigation";
 
-const PORTAL_BASE = "/site/government";
-
 export function useSiteBase() {
-  const pathname = usePathname();
-  return pathname?.startsWith(PORTAL_BASE) ? PORTAL_BASE : "";
+  const pathname = usePathname() ?? "";
+  return pathname.startsWith("/site/government") ? "/site/government" : "";
 }
 
-export function withSiteBase(path: string, base: string) {
-  if (!path || path.startsWith("#")) return path;
-  if (!base) return path;
-  if (path.startsWith(base)) return path;
-  if (path.startsWith("/")) return `${base}${path}`;
-  return `${base}/${path}`;
+export function withSiteBase(href: string, siteBase = "") {
+  if (!href) return href;
+  if (href.startsWith("#")) return href;
+  if (href.startsWith("http")) return href;
+  if (siteBase && href.startsWith(siteBase)) return href;
+  if (siteBase && href.startsWith("/")) return `${siteBase}${href}`;
+  return href;
 }

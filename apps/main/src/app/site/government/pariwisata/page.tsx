@@ -1,2 +1,2 @@
-export { default } from "../../../../../../government/src/app/pariwisata/page";
+﻿export { default } from "../../../../../../government/src/app/pariwisata/page";
 

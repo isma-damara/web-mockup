@@ -1,43 +1,103 @@
-"use client";
+﻿import GovNav from "../components/GovNav";
+import { BackToTop, GovFooter } from "../components/GovSections";
+import { Breadcrumbs, ContentWrap, PageHero, SectionHeader } from "../components/GovPrimitives";
 
-import { Calendar, Clock, MapPin } from "lucide-react";
-import GovNav from "../components/GovNav";
-import { GovFooter } from "../components/GovSections";
-import { agenda } from "../components/GovData";
+const agendaItems = [
+  {
+    day: "30",
+    month: "Jan",
+    title: "Rapat Koordinasi Pembangunan Infrastruktur Q1 2025",
+    time: "09.00 WIB",
+    place: "Balaikota Lt.3",
+    badge: "Tertutup",
+    badgeClass: "bg-[rgba(26,86,219,0.1)] text-[var(--gov-blue)]",
+  },
+  {
+    day: "01",
+    month: "Feb",
+    title: "Musrenbang Kecamatan Tahun Anggaran 2026",
+    time: "08.00 WIB",
+    place: "12 Kecamatan",
+    badge: "Terbuka",
+    badgeClass: "bg-[rgba(22,163,74,0.12)] text-[var(--gov-green)]",
+  },
+  {
+    day: "05",
+    month: "Feb",
+    title: "Festival Kuliner & Budaya Nusantara 2025",
+    time: "10.00 WIB",
+    place: "Alun-alun Kota",
+    badge: "Terbuka",
+    badgeClass: "bg-[rgba(22,163,74,0.12)] text-[var(--gov-green)]",
+  },
+  {
+    day: "08",
+    month: "Feb",
+    title: "Rapat Paripurna DPRD — Pembahasan Ranperda 2025",
+    time: "13.00 WIB",
+    place: "Gedung DPRD",
+    badge: "Livestream",
+    badgeClass: "bg-[rgba(26,86,219,0.1)] text-[var(--gov-blue)]",
+  },
+  {
+    day: "12",
+    month: "Feb",
+    title: "Vaksinasi Massal Gratis untuk Seluruh Warga",
+    time: "08.00 WIB",
+    place: "GOR Kota Contoh",
+    badge: "Terbuka",
+    badgeClass: "bg-[rgba(22,163,74,0.12)] text-[var(--gov-green)]",
+  },
+  {
+    day: "17",
+    month: "Feb",
+    title: "Seminar Investasi & Peluang Bisnis Kota Contoh 2025",
+    time: "09.00 WIB",
+    place: "Hotel Grand Contoh",
+    badge: "Daftar",
+    badgeClass: "bg-[rgba(201,151,43,0.18)] text-[var(--gov-gold)]",
+  },
+];
 
 export default function AgendaPage() {
   return (
-    <div className="min-h-screen bg-emerald-50/20 font-sans">
+    <div className="min-h-screen bg-[var(--gov-cream)] text-[var(--gov-text)]">
       <GovNav />
-      <section className="py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-4 py-1.5 text-sm font-medium text-emerald-700 mb-3">
-              <Calendar className="h-3.5 w-3.5" /> Agenda
-            </span>
-            <h1 className="text-2xl font-bold text-slate-800 sm:text-3xl">Agenda <span className="text-emerald-600">Mendatang</span></h1>
-            <p className="mt-2 text-slate-500 max-w-lg mx-auto">Kegiatan resmi pemerintah kota dalam waktu dekat.</p>
-          </div>
-          <div className="space-y-3">
-            {agenda.map((a, i) => (
-              <div key={i} className="flex items-start gap-4 rounded-xl border border-emerald-200 bg-white p-4">
-                <div className="flex h-12 w-12 shrink-0 flex-col items-center justify-center rounded-lg bg-emerald-100 text-emerald-700">
-                  <div className="text-lg font-bold leading-none">{a.date.split(" ")[0]}</div>
-                  <div className="text-[10px] font-medium">{a.date.split(" ")[1]}</div>
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-semibold text-slate-800 text-sm">{a.title}</h3>
-                  <div className="text-xs text-slate-400 mt-1 flex items-center gap-3">
-                    <span className="flex items-center gap-1"><Clock className="h-3 w-3" /> {a.time}</span>
-                    <span className="flex items-center gap-1"><MapPin className="h-3 w-3" /> {a.location}</span>
-                  </div>
+      <Breadcrumbs items={[{ label: "Beranda", href: "/" }, { label: "Agenda Kota" }]} />
+      <PageHero
+        badge="📅 Agenda"
+        title="Agenda Kota"
+        description="Jadwal kegiatan pemerintah, acara publik, dan agenda resmi Kota Contoh."
+      />
+      <ContentWrap className="py-10 sm:py-12">
+        <SectionHeader
+          label="📌 Mendatang"
+          title="Agenda Terdekat"
+          description="Pantau agenda terbaru dan rencanakan kehadiran Anda."
+        />
+        <div className="grid gap-4 md:grid-cols-2">
+          {agendaItems.map((item) => (
+            <div key={item.title} className="card-base flex gap-4 px-4 py-4">
+              <div className="flex h-14 w-12 flex-col items-center justify-center rounded-xl bg-[var(--gov-navy)] text-white">
+                <div className="font-display text-[20px] font-bold">{item.day}</div>
+                <div className="text-[10px] font-semibold uppercase text-[var(--gov-gold-light)]">{item.month}</div>
+              </div>
+              <div className="flex-1">
+                <div className="text-[14px] font-semibold text-[var(--gov-navy)]">{item.title}</div>
+                <div className="mt-1 flex flex-wrap gap-3 text-[12px] text-[var(--gov-slate)]">
+                  <span>⏰ {item.time}</span>
+                  <span>📍 {item.place}</span>
+                  <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-semibold ${item.badgeClass}`}>
+                    {item.badge}
+                  </span>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
-      </section>
+      </ContentWrap>
       <GovFooter />
+      <BackToTop />
     </div>
   );
 }

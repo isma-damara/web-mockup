@@ -1,2 +1,2 @@
-export { default } from "../../../../../../government/src/app/layanan/page";
+﻿export { default } from "../../../../../../government/src/app/layanan/page";
 
