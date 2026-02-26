@@ -1,233 +1,214 @@
-"use client";
-
-import { useState } from "react";
-import {
-  ChevronRight, Newspaper, MapPin, Clock, Users, Building,
-  Eye, TrendingUp, Award, Calendar, ArrowRight, Landmark,
-} from "lucide-react";
+import Link from "next/link";
 import GovNav from "./components/GovNav";
-import { AnimatedStats, PariwisataSection, GaleriSection, PPIDSection, PengaduanSection, MapSocialSection, GovFooter } from "./components/GovSections";
-import { news, services, agenda } from "./components/GovData";
+import { GovFooter } from "./components/GovSections";
+import { ContentWrap, SectionHeader } from "./components/GovPrimitives";
+import { Button } from "@workspace/ui/ui/button";
+import { getGovContent } from "./data/getGovContent";
 
-export default function GovernmentPage() {
-  const [agendaView, setAgendaView] = useState<"list" | "calendar">("list");
+export default async function GovernmentPage() {
+  const { agendaItems, beritaHighlight, heroCards, quickAccess, stats } = await getGovContent();
 
   return (
-    <div className="min-h-screen bg-emerald-50/20 font-sans">
+    <div className="min-h-screen bg-(--gov-cream) text-(--gov-text)">
       <GovNav />
 
-      {/* ---- HERO ---- */}
-      <section id="hero" className="relative overflow-hidden bg-gradient-to-br from-emerald-700 via-emerald-600 to-teal-700 text-white py-24 sm:py-32">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-0 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
-          <div className="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-teal-300/20 blur-3xl" />
-          <div className="absolute inset-0" style={{
-            backgroundImage: "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }} />
+      <div className="bg-(--gov-navy-mid) py-2 text-white/70">
+        <ContentWrap className="flex items-center gap-3">
+          <span className="rounded bg-(--gov-gold) px-2 py-0.5 text-[11px] font-bold uppercase tracking-[0.06em] text-white">
+            📢 Pengumuman
+          </span>
+          <span className="text-[13px]">
+            Pendaftaran PPDB 2025 dibuka mulai 1 Juni 2025 — Vaksinasi Gratis Puskesmas Seluruh
+            Kota Contoh — APBD 2025 telah disahkan oleh DPRD Kota Contoh — Festival Budaya Tahunan
+            17 Agustus 2025
+          </span>
+        </ContentWrap>
+      </div>
+
+      <section className="relative overflow-hidden bg-linear-to-br from-(--gov-navy) via-(--gov-navy-mid) to-(--gov-blue)">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_50%,rgba(26,86,219,0.2)_0%,transparent_60%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_10%_80%,rgba(201,151,43,0.12)_0%,transparent_50%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[60px_60px]" />
         </div>
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium text-emerald-100 mb-6 backdrop-blur-sm border border-white/10">
-              <Landmark className="h-3.5 w-3.5" /> Portal Resmi Pemerintah Kota
-            </span>
-            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
-              Selamat Datang di
-              <span className="block mt-2 text-emerald-200">Kota Nusantara</span>
+        <ContentWrap className="relative grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-2">
+          <div className="animate-fade-up">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[rgba(201,151,43,0.3)] bg-[rgba(201,151,43,0.15)] px-4 py-1 text-[11.5px] font-semibold uppercase tracking-widest text-(--gov-gold-light)">
+              ✦ Portal Resmi Pemerintahan
+            </div>
+            <h1 className="font-display text-4xl font-extrabold leading-tight text-white md:text-5xl">
+              Melayani dengan <span className="text-(--gov-gold-light)">Tulus</span>, Membangun
+              dengan Amanah
             </h1>
-            <p className="mt-5 text-lg text-emerald-100 max-w-xl leading-relaxed">
-              Kota modern, berkelanjutan, dan inklusif. Melayani masyarakat dengan transparansi, inovasi, dan dedikasi untuk kesejahteraan bersama.
+            <p className="mt-4 max-w-xl text-[15.5px] leading-7 text-white/70">
+              Selamat datang di portal resmi Pemerintah Kota Contoh. Dapatkan akses mudah ke
+              layanan publik, informasi pemerintahan, dan berbagai program untuk warga Kota Contoh.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <button
-                onClick={() => document.getElementById("layanan")?.scrollIntoView({ behavior: "smooth" })}
-                className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-semibold text-emerald-700 shadow-lg hover:bg-emerald-50 transition-all hover:-translate-y-0.5"
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Button
+                asChild
+                className="h-11 rounded-xl bg-(--gov-gold) text-[14px] font-semibold text-white shadow-[0_6px_20px_rgba(201,151,43,0.35)] hover:bg-[#a87820]"
               >
-                Layanan Online <ArrowRight className="h-4 w-4" />
-              </button>
-              <button
-                onClick={() => document.getElementById("kontak")?.scrollIntoView({ behavior: "smooth" })}
-                className="inline-flex items-center gap-2 rounded-xl bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm border border-white/15 hover:bg-white/20 transition-colors"
+                <Link href="/site/government/layanan">🏛️ Layanan Publik</Link>
+              </Button>
+              <Button
+                variant="outline"
+                className="h-11 rounded-xl border-white/30 bg-white/10 text-[14px] font-semibold text-white hover:bg-white/20"
+                asChild
               >
-                Hubungi Kami
-              </button>
+                <Link href="/site/government/pengaduan">📣 Sampaikan Aspirasi</Link>
+              </Button>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ---- ANIMATED STATS ---- */}
-      <AnimatedStats />
-
-      {/* ---- LAYANAN PUBLIK ---- */}
-      <section id="layanan" className="py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-4 py-1.5 text-sm font-medium text-emerald-700 mb-3">
-              Layanan Publik
-            </span>
-            <h2 className="text-2xl font-bold text-slate-800 sm:text-3xl">
-              Layanan untuk <span className="text-emerald-600">Masyarakat</span>
-            </h2>
-            <p className="mt-2 text-slate-500 max-w-lg mx-auto">Akses berbagai layanan pemerintahan secara online, cepat, dan transparan.</p>
-          </div>
-          <div className="grid gap-4 grid-cols-2 sm:grid-cols-4">
-            {services.map((svc) => (
-              <button key={svc.name} className="group flex flex-col items-center gap-3 rounded-2xl border border-slate-200 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald-100 hover:border-emerald-200">
-                <div className={`flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br ${svc.color} text-white shadow-md transition-transform group-hover:scale-110`}>
-                  <svc.icon className="h-6 w-6" />
-                </div>
-                <div className="text-center">
-                  <div className="font-semibold text-sm text-slate-700">{svc.name}</div>
-                  <div className="text-xs text-slate-400 mt-0.5">{svc.desc}</div>
-                </div>
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ---- BERITA TERKINI ---- */}
-      <section id="berita" className="py-16 sm:py-20 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-10">
-            <div>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-4 py-1.5 text-sm font-medium text-emerald-700 mb-3"> <Newspaper className="h-3.5 w-3.5" /> Berita</span>
-              <h2 className="text-2xl font-bold text-slate-800 sm:text-3xl">Berita <span className="text-emerald-600">Terkini</span></h2>
-            </div>
-            <button className="hidden sm:inline-flex items-center gap-1 text-sm font-medium text-emerald-600 hover:text-emerald-700">Lihat Semua <ChevronRight className="h-4 w-4" /></button>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {news.map((item, i) => (
-              <div key={i} className="group rounded-2xl border border-slate-100 bg-white overflow-hidden transition-all hover:shadow-lg hover:shadow-emerald-50 hover:-translate-y-0.5 cursor-pointer">
-                <div className={`h-40 bg-gradient-to-br ${item.gradient} flex items-center justify-center relative`}>
-                  <Newspaper className="h-10 w-10 text-white/20" />
-                  <span className={`absolute top-3 left-3 rounded-full px-2.5 py-0.5 text-[10px] font-semibold ${item.color}`}>{item.category}</span>
-                </div>
-                <div className="p-5">
-                  <div className="flex items-center gap-1 text-xs text-slate-400 mb-2">
-                    <Calendar className="h-3 w-3" /> {item.date}
+            <div className="mt-8 flex flex-wrap gap-6 border-t border-white/10 pt-6 text-white">
+              {[
+                { value: "1.2 Jt", label: "Penduduk" },
+                { value: "38", label: "OPD/SKPD" },
+                { value: "245", label: "Layanan Digital" },
+                { value: "96%", label: "Kepuasan Warga" },
+              ].map((item) => (
+                <div key={item.label}>
+                  <div className="font-display text-2xl font-bold">{item.value}</div>
+                  <div className="text-[11.5px] uppercase tracking-[0.06em] text-white/50">
+                    {item.label}
                   </div>
-                  <h3 className="font-semibold text-slate-800 leading-snug group-hover:text-emerald-700 transition-colors line-clamp-2 text-sm">{item.title}</h3>
-                  <p className="mt-2 text-xs text-slate-500 line-clamp-2">{item.excerpt}</p>
                 </div>
-              </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-3 animate-fade-up animation-delay-200">
+            {heroCards.map((card, index) => (
+              <Link
+                key={card.title}
+                href={card.href}
+                className={`flex items-center gap-4 rounded-2xl border border-white/10 bg-white/10 px-5 py-4 text-white backdrop-blur transition hover:translate-x-1 hover:bg-white/20 animate-fade-up ${
+                  index === 1 ? "animation-delay-200" : index === 2 ? "animation-delay-400" : index === 3 ? "animation-delay-600" : ""
+                }`}
+              >
+                <div className={`flex h-11 w-11 items-center justify-center rounded-xl ${card.color}`}>
+                  <span className="text-xl">{card.icon}</span>
+                </div>
+                <div>
+                  <div className="text-[13.5px] font-semibold">{card.title}</div>
+                  <div className="text-[12px] text-white/50">{card.desc}</div>
+                </div>
+              </Link>
             ))}
           </div>
-        </div>
+        </ContentWrap>
       </section>
 
-      {/* ---- PROFIL & AGENDA ---- */}
-      <section id="profil" className="py-16 sm:py-20 bg-gradient-to-br from-emerald-50 to-teal-50">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="section-band py-8 sm:py-10 animate-fade-up animation-delay-200">
+        <ContentWrap>
+          <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-6">
+            {quickAccess.map((item, index) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                className={`rounded-xl border border-(--gov-border)var(--gov-cream)] px-4 py-5 text-center transition hover:-translate-y-1 hover:border-(--gov-blue) hover:bg-[rgba(26,86,219,0.04)] animate-fade-up ${
+                  index === 1 ? "animation-delay-200" : index === 2 ? "animation-delay-400" : index === 3 ? "animation-delay-600" : index === 4 ? "animation-delay-800" : ""
+                }`}
+              >
+                <div className="text-2xl">{item.icon}</div>
+                <div className="mt-2 text-[12.5px] font-semibold text-(--gov-text)">
+                  {item.label}
+                </div>
+              </Link>
+            ))}
+          </div>
+        </ContentWrap>
+      </section>
+
+      <section className="py-10 sm:py-12 animate-fade-up animation-delay-200">
+        <ContentWrap>
           <div className="grid gap-10 lg:grid-cols-2">
-            {/* Profil Kota */}
             <div>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-4 py-1.5 text-sm font-medium text-emerald-700 mb-4"><Building className="h-3.5 w-3.5" /> Profil Kota</span>
-              <h2 className="text-2xl font-bold text-slate-800 sm:text-3xl mb-4">Visi & Misi <span className="text-emerald-600">Kota Nusantara</span></h2>
+              <div className="flex items-end justify-between">
+                <SectionHeader label="📰 Terbaru" title="Berita Kota" />
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="border-(--gov-blue) text-(--gov-blue) hover:bg-(--gov-blue) hover:text-white"
+                  asChild
+                >
+                  <Link href="/site/government/berita">Lihat Semua →</Link>
+                </Button>
+              </div>
               <div className="space-y-4">
-                <div className="rounded-xl border border-emerald-200 bg-white p-5">
-                  <div className="flex items-center gap-2 mb-2"><Eye className="h-5 w-5 text-emerald-600" /><h3 className="font-semibold text-slate-800">Visi</h3></div>
-                  <p className="text-sm text-slate-600 leading-relaxed">Mewujudkan Kota Nusantara sebagai kota modern, inklusif, dan berkelanjutan yang menjadi kebanggaan masyarakat Indonesia.</p>
-                </div>
-                <div className="rounded-xl border border-emerald-200 bg-white p-5">
-                  <div className="flex items-center gap-2 mb-2"><TrendingUp className="h-5 w-5 text-emerald-600" /><h3 className="font-semibold text-slate-800">Misi</h3></div>
-                  <ul className="text-sm text-slate-600 space-y-1.5">
-                    {[
-                      "Meningkatkan kualitas pelayanan publik berbasis digital",
-                      "Membangun infrastruktur hijau dan berkelanjutan",
-                      "Mendorong pertumbuhan ekonomi inklusif",
-                      "Memperkuat budaya dan pariwisata lokal",
-                    ].map((m, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0" />{m}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            {/* Agenda */}
-            <div>
-              <div className="flex items-center justify-between mb-4">
-                <div>
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-4 py-1.5 text-sm font-medium text-emerald-700 mb-4"><Calendar className="h-3.5 w-3.5" /> Agenda</span>
-                  <h2 className="text-2xl font-bold text-slate-800 sm:text-3xl">Agenda <span className="text-emerald-600">Mendatang</span></h2>
-                </div>
-                <div className="flex items-center border border-slate-200 rounded-lg overflow-hidden">
-                  <button onClick={() => setAgendaView("list")}
-                    className={`px-3 py-1.5 text-xs font-medium transition-colors ${agendaView === "list" ? "bg-emerald-50 text-emerald-600" : "text-slate-400 hover:bg-slate-50"}`}>
-                    List
-                  </button>
-                  <button onClick={() => setAgendaView("calendar")}
-                    className={`px-3 py-1.5 text-xs font-medium transition-colors ${agendaView === "calendar" ? "bg-emerald-50 text-emerald-600" : "text-slate-400 hover:bg-slate-50"}`}>
-                    Calendar
-                  </button>
-                </div>
-              </div>
-
-              {agendaView === "list" ? (
-                <div className="space-y-3">
-                  {agenda.map((a, i) => (
-                    <div key={i} className="flex items-start gap-4 rounded-xl border border-emerald-200 bg-white p-4">
-                      <div className="flex h-12 w-12 shrink-0 flex-col items-center justify-center rounded-lg bg-emerald-100 text-emerald-700">
-                        <div className="text-lg font-bold leading-none">{a.date.split(" ")[0]}</div>
-                        <div className="text-[10px] font-medium">{a.date.split(" ")[1]}</div>
+                {beritaHighlight.map((item) => (
+                  <div key={item.title} className="card-base flex overflow-hidden">
+                    <div className={`flex w-27.5 items-center justify-center text-3xl ${item.color} text-white/90`}>
+                      {item.icon}
+                    </div>
+                    <div className="px-4 py-3">
+                      <div className="mb-1 flex items-center gap-2 text-[11px] text-(--gov-slate)">
+                        <span className="rounded-full bg-[rgba(26,86,219,0.1)] px-2.5 py-0.5 text-[11px] font-semibold text-(--gov-blue)">
+                          {item.badge}
+                        </span>
+                        {item.date}
                       </div>
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-slate-800 text-sm">{a.title}</h3>
-                        <div className="text-xs text-slate-400 mt-1 flex items-center gap-3">
-                          <span className="flex items-center gap-1"><Clock className="h-3 w-3" /> {a.time}</span>
-                          <span className="flex items-center gap-1"><MapPin className="h-3 w-3" /> {a.location}</span>
-                        </div>
+                      <div className="text-[13.5px] font-semibold text-(--gov-navy)">
+                        {item.title}
                       </div>
                     </div>
-                  ))}
-                </div>
-              ) : (
-                /* Calendar view */
-                <div className="rounded-xl border border-emerald-200 bg-white p-5">
-                  <div className="text-center font-bold text-slate-800 mb-4">Februari — Maret 2026</div>
-                  <div className="grid grid-cols-7 gap-1 text-center text-xs">
-                    {["Sen", "Sel", "Rab", "Kam", "Jum", "Sab", "Min"].map((d) => (
-                      <div key={d} className="py-1 text-slate-400 font-medium">{d}</div>
-                    ))}
-                    {Array.from({ length: 35 }).map((_, i) => {
-                      const day = i - 1;
-                      const hasEvent = [24, 26, 28, 30, 32].includes(i);
-                      return (
-                        <div key={i} className={`py-2 rounded-lg text-sm ${day < 0 || day > 30 ? "text-slate-200" : hasEvent ? "bg-emerald-100 text-emerald-700 font-bold" : "text-slate-600 hover:bg-slate-50"} cursor-pointer transition-colors`}>
-                          {day >= 0 && day <= 30 ? day + 1 : ""}
-                        </div>
-                      );
-                    })}
                   </div>
-                  <div className="mt-3 flex items-center gap-2 text-xs text-slate-400">
-                    <div className="h-3 w-3 rounded bg-emerald-100" /> Ada kegiatan
-                  </div>
-                </div>
-              )}
+                ))}
+              </div>
+            </div>
 
-              {/* Achievement */}
-              <div className="mt-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 p-6 text-white">
-                <div className="flex items-center gap-3 mb-3">
-                  <Award className="h-6 w-6" /><h3 className="font-bold">Penghargaan</h3>
-                </div>
-                <p className="text-sm text-emerald-100">
-                  Kota Nusantara meraih penghargaan <strong>Kota Layak Anak</strong> dan <strong>Adipura Kencana</strong> tahun 2025.
-                </p>
+            <div>
+              <div className="flex items-end justify-between">
+                <SectionHeader label="📅 Jadwal" title="Agenda Kota" />
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="border-(--gov-blue) text-(--gov-blue) hover:bg-(--gov-blue) hover:text-white"
+                  asChild
+                >
+                  <Link href="/site/government/agenda">Lihat Semua →</Link>
+                </Button>
+              </div>
+              <div className="space-y-3">
+                {agendaItems.slice(0, 4).map((item) => (
+                  <div key={item.title} className="card-base flex gap-4 px-4 py-3 hover:border-(--gov-blue)">
+                    <div className="flex h-14 w-14 flex-col items-center justify-center rounded-lg bg-(--gov-navy) text-white">
+                      <div className="font-display text-lg font-bold leading-none">{item.day}</div>
+                      <div className="text-[10px] font-semibold text-(--gov-gold-light) uppercase">
+                        {item.month}
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-[14px] font-semibold text-(--gov-navy)">{item.title}</div>
+                      <div className="mt-1 flex flex-wrap gap-3 text-[12px] text-(--gov-slate)">
+                        <span>⏰ {item.time}</span>
+                        <span>📍 {item.place}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
-        </div>
+
+          <div className="mt-12">
+            <SectionHeader label="📊 Data" title="Statistik Kota Contoh" />
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {stats.map((stat) => (
+                <div key={stat.label} className="card-base flex items-center gap-4 p-5">
+                  <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${stat.color} text-xl`}>
+                    {stat.icon}
+                  </div>
+                  <div>
+                    <div className="font-display text-2xl font-bold text-(--gov-navy)">{stat.value}</div>
+                    <div className="text-[12.5px] text-(--gov-text-muted)">{stat.label}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </ContentWrap>
       </section>
 
-      <PariwisataSection />
-      <GaleriSection />
-      <PPIDSection />
-      <PengaduanSection />
-      <MapSocialSection />
       <GovFooter />
     </div>
   );
