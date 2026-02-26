@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Star, Sparkles, MapPin, Phone, Mail, Instagram, Twitter, Facebook, Youtube } from "lucide-react";
+import { Star, Sparkles, MapPin, Phone, Mail, Instagram, Twitter, Facebook, Youtube, Clock } from "lucide-react";
 import { blogPosts } from "./CatalogData";
 import { useSiteBase, withSiteBase } from "./useSiteBase";
 
@@ -163,20 +163,20 @@ export function InstagramFeed() {
 export function CatalogFooter() {
   const siteBase = useSiteBase();
   return (
-    <footer id="footer" className="bg-slate-900 text-slate-300 py-16">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
-          <div className="lg:col-span-2">
+    <footer id="footer" className="bg-slate-900 text-slate-300 py-6">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="grid items-start gap-4 lg:grid-cols-[1.2fr_0.9fr_0.9fr] lg:gap-6">
+          <div>
             <div className="flex items-center gap-2 mb-4">
               <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-rose-500 to-pink-500">
                 <Sparkles className="h-4 w-4 text-white" />
               </div>
               <span className="text-lg font-bold text-white">Glow<span className="text-rose-400">Beauty</span></span>
             </div>
-            <p className="text-sm text-slate-400 leading-relaxed max-w-xs mb-4">
+            <p className="text-sm text-slate-400 leading-relaxed max-w-sm mb-3">
               Produk kecantikan alami, halal, dan cruelty-free untuk kulit sehat dan bercahaya.
             </p>
-            <div className="space-y-2 mb-5">
+            <div className="space-y-1.5 mb-4 text-[13px]">
               <div className="flex items-center gap-2 text-sm text-slate-400">
                 <MapPin className="h-4 w-4 text-rose-400 shrink-0" />
                 <span>Jl. Kemang Raya No. 45, Jakarta Selatan</span>
@@ -190,7 +190,7 @@ export function CatalogFooter() {
                 <span>hello@glowbeauty.id</span>
               </div>
             </div>
-            <div className="flex gap-3">
+            <div className="flex gap-2.5">
               {[Instagram, Twitter, Facebook, Youtube].map((Icon, i) => (
                 <a key={i} href="#" className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-800 text-slate-400 hover:bg-rose-500 hover:text-white transition-all">
                   <Icon className="h-4 w-4" />
@@ -198,56 +198,45 @@ export function CatalogFooter() {
               ))}
             </div>
           </div>
-          {[
-            { title: "Produk", links: ["Skincare", "Makeup", "Bodycare", "Haircare", "New Arrivals", "Best Seller"] },
-            { title: "Info", links: ["About Brand", "Testimoni", "Before & After"] },
-            { title: "Bantuan", links: ["FAQ", "Hubungi Kami", "Pengiriman", "Kebijakan Retur", "Syarat & Ketentuan"] },
-          ].map((col) => (
-            <div key={col.title}>
-              <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-white">{col.title}</h4>
-              <ul className="space-y-2">
-                {col.links.map((l) => (
-                  <li key={l}>
-                    {col.title === "Produk" ? (
-                      <Link href={withSiteBase("/products", siteBase)} className="text-sm text-slate-400 hover:text-rose-400 transition-colors">
-                        {l}
-                      </Link>
-                    ) : col.title === "Info" ? (
-                      <Link
-                        href={withSiteBase(
-                          l === "About Brand" ? "/brand" : l === "Before & After" ? "/before-after" : "/blog",
-                          siteBase
-                        )}
-                        className="text-sm text-slate-400 hover:text-rose-400 transition-colors"
-                      >
-                        {l}
-                      </Link>
-                    ) : (
-                      <Link
-                        href={withSiteBase(
-                          l === "FAQ"
-                            ? "/help/faq"
-                            : l === "Hubungi Kami"
-                              ? "/help/hubungi-kami"
-                              : l === "Pengiriman"
-                                ? "/help/pengiriman"
-                                : l === "Kebijakan Retur"
-                                  ? "/help/kebijakan-retur"
-                                  : "/help",
-                          siteBase
-                        )}
-                        className="text-sm text-slate-400 hover:text-rose-400 transition-colors"
-                      >
-                        {l}
-                      </Link>
-                    )}
-                  </li>
-                ))}
-              </ul>
+          <div>
+            <h4 className="mb-2 text-sm font-semibold uppercase tracking-wider text-white">Kepercayaan</h4>
+            <div className="flex flex-wrap gap-2">
+              {["Halal Certified", "BPOM Registered", "Cruelty-Free"].map((item) => (
+                <span key={item} className="rounded-full bg-slate-800 px-3 py-1 text-[11px] text-slate-300">
+                  {item}
+                </span>
+              ))}
             </div>
-          ))}
+            <div className="mt-3 text-xs text-slate-400">
+              <div className="flex items-center gap-2">
+                <Clock className="h-3.5 w-3.5 text-rose-400" />
+                <span>Senin-Jumat, 09.00-18.00</span>
+              </div>
+              <div className="flex items-center gap-2 mt-1">
+                <Clock className="h-3.5 w-3.5 text-rose-400" />
+                <span>Sabtu, 10.00-16.00</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4 className="mb-2 text-sm font-semibold uppercase tracking-wider text-white">Bantuan</h4>
+            <ul className="space-y-1.5">
+              {[
+                { label: "FAQ", href: "/help/faq" },
+                { label: "Pengiriman", href: "/help/pengiriman" },
+                { label: "Retur & Refund", href: "/help/kebijakan-retur" },
+                { label: "Hubungi Kami", href: "/help/hubungi-kami" },
+              ].map((item) => (
+                <li key={item.label}>
+                  <Link href={withSiteBase(item.href, siteBase)} className="text-sm text-slate-400 hover:text-rose-400 transition-colors">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-        <div className="mt-12 pt-6 border-t border-slate-800 text-center text-sm text-slate-500">
+        <div className="mt-6 pt-4 border-t border-slate-800 text-center text-xs text-slate-500">
           &copy; {new Date().getFullYear()} GlowBeauty. All rights reserved. | Halal Certified | BPOM Registered
         </div>
       </div>

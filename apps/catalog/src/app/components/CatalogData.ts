@@ -115,6 +115,3 @@ export const badgeColor: Record<string, string> = {
   Premium: "bg-amber-500 text-white",
 };
 
-export function formatPrice(p: number) {
-  return "Rp " + p.toLocaleString("id-ID");
-}
