@@ -3,9 +3,9 @@
 import { useState, useRef } from "react";
 import Link from "next/link";
 import {
-  Search, Heart, Sparkles, ChevronDown, X, Menu, Trash2, Star,
+  Search, Heart, Sparkles, ChevronDown, X, Menu, Trash2,
 } from "lucide-react";
-import { products, formatPrice } from "./CatalogData";
+import { products } from "./CatalogData";
 import { useSiteBase, withSiteBase } from "./useSiteBase";
 
 interface Props {
@@ -17,10 +17,7 @@ interface Props {
 
 const navItems = [
   { label: "Home", href: "#hero" },
-  {
-    label: "Products", href: "#products",
-    sub: ["Skincare", "Makeup", "Haircare", "Body Care", "New Arrivals", "Best Seller"],
-  },
+  { label: "Products", href: "#products" },
   {
     label: "About Brand", href: "#brand",
     sub: ["Our Story", "Store Locator", "Contact Us"],
@@ -35,6 +32,16 @@ export default function CatalogNav({ liked, toggleLike, searchOpen, setSearchOpe
   const [wishlistOpen, setWishlistOpen] = useState(false);
   const dropTimer = useRef<NodeJS.Timeout | null>(null);
   const siteBase = useSiteBase();
+
+  const navHref = (href: string) => {
+    if (href.startsWith("#")) return withSiteBase(`/${href}`, siteBase);
+    return withSiteBase(href, siteBase);
+  };
+
+  const productHref = (productName: string) => {
+    const slug = productName.toLowerCase().replace(/\s+/g, "-");
+    return withSiteBase(`/products/${slug}`, siteBase);
+  };
 
   const suggestions = searchQuery.length > 1
     ? products.filter((p) => p.name.toLowerCase().includes(searchQuery.toLowerCase())).slice(0, 5)
@@ -69,7 +76,7 @@ export default function CatalogNav({ liked, toggleLike, searchOpen, setSearchOpe
               }}
             >
               <a
-                href={item.href}
+                href={navHref(item.href)}
                 className="flex items-center gap-1 rounded-full px-3 py-2 hover:text-rose-600 hover:bg-rose-50 transition-colors"
               >
                 {item.label}
@@ -83,16 +90,13 @@ export default function CatalogNav({ liked, toggleLike, searchOpen, setSearchOpe
                     {item.sub.map((s) => (
                       <a
                         key={s}
-                        href={withSiteBase(
-                          s === "Store Locator"
-                            ? "/contact"
-                            : s === "Contact Us"
-                              ? "/help/hubungi-kami"
-                              : s === "Our Story"
-                                ? "/brand"
-                                : "/products",
-                          siteBase
-                        )}
+                        href={s === "Store Locator"
+                          ? withSiteBase("/contact", siteBase)
+                          : s === "Contact Us"
+                            ? withSiteBase("/help/hubungi-kami", siteBase)
+                            : s === "Our Story"
+                              ? withSiteBase("/brand", siteBase)
+                              : productHref(s)}
                         className="block rounded-lg px-3.5 py-2 text-sm text-slate-600 hover:bg-rose-50 hover:text-rose-600 transition-colors"
                         onClick={() => setOpenDrop(null)}
                       >
@@ -183,7 +187,9 @@ export default function CatalogNav({ liked, toggleLike, searchOpen, setSearchOpe
             {navItems.map((item) => (
               <div key={item.label}>
                 <div className="flex items-center">
-                  <a href={item.href} onClick={() => setMobileOpen(false)}
+                  <a
+                    href={navHref(item.href)}
+                    onClick={() => setMobileOpen(false)}
                     className="flex-1 py-3 text-sm font-medium text-slate-600 hover:text-rose-600">
                     {item.label}
                   </a>
@@ -199,16 +205,13 @@ export default function CatalogNav({ liked, toggleLike, searchOpen, setSearchOpe
                     {item.sub.map((s) => (
                       <a
                         key={s}
-                        href={withSiteBase(
-                          s === "Store Locator"
-                            ? "/contact"
-                            : s === "Contact Us"
-                              ? "/help/hubungi-kami"
-                              : s === "Our Story"
-                                ? "/brand"
-                                : "/products",
-                          siteBase
-                        )}
+                        href={s === "Store Locator"
+                          ? withSiteBase("/contact", siteBase)
+                          : s === "Contact Us"
+                            ? withSiteBase("/help/hubungi-kami", siteBase)
+                            : s === "Our Story"
+                              ? withSiteBase("/brand", siteBase)
+                              : productHref(s)}
                         onClick={() => setMobileOpen(false)}
                         className="block py-2 text-sm text-slate-500 hover:text-rose-600"
                       >
@@ -253,15 +256,7 @@ export default function CatalogNav({ liked, toggleLike, searchOpen, setSearchOpe
                     <div className="flex-1 min-w-0">
                       <div className="font-medium text-sm text-slate-800 truncate">{p.name}</div>
                       <div className="text-xs text-slate-400 mt-0.5">{p.category}</div>
-                      <div className="text-sm font-bold text-rose-600 mt-1">{formatPrice(p.price)}</div>
-                      {p.originalPrice && (
-                        <div className="text-xs text-slate-400 line-through">{formatPrice(p.originalPrice)}</div>
-                      )}
                       <div className="flex items-center gap-2 mt-2">
-                        <div className="flex items-center gap-0.5">
-                          <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
-                          <span className="text-xs text-slate-500">{p.rating}</span>
-                        </div>
                         <button
                           onClick={() => toggleLike(p.id)}
                           className="ml-auto h-6 w-6 rounded border border-slate-200 flex items-center justify-center hover:bg-rose-50 hover:border-rose-200 transition-colors"
@@ -280,10 +275,8 @@ export default function CatalogNav({ liked, toggleLike, searchOpen, setSearchOpe
             {wishlistProducts.length > 0 && (
               <div className="p-5 border-t space-y-3">
                 <div className="flex justify-between text-sm">
-                  <span className="text-slate-500">Total ({wishlistProducts.length} produk)</span>
-                  <span className="font-bold text-lg text-slate-800">
-                    {formatPrice(wishlistProducts.reduce((s, p) => s + p.price, 0))}
-                  </span>
+                  <span className="text-slate-500">Total Produk</span>
+                  <span className="font-bold text-lg text-slate-800">{wishlistProducts.length}</span>
                 </div>
                 <button
                   onClick={() => setWishlistOpen(false)}

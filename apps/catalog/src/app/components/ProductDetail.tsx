@@ -1,13 +1,20 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
-import { X, Star, Heart } from "lucide-react";
-import { formatPrice } from "./CatalogData";
+import { X, Heart } from "lucide-react";
 
 interface Product {
-  id: number; name: string; category: string; price: number; originalPrice: number | null;
-  rating: number; reviews: number; badge: string | null; gradient: string;
-  desc: string; ingredients: string; howToUse: string; variants: string[];
+  id: number;
+  name: string;
+  category: string;
+  rating: number;
+  reviews: number;
+  badge: string | null;
+  gradient: string;
+  desc: string;
+  ingredients: string;
+  howToUse: string;
+  variants: string[];
 }
 
 interface Props {
@@ -22,9 +29,9 @@ export default function ProductDetail({ product, onClose, onToggleLike, isLiked 
   const [selectedVariant, setSelectedVariant] = useState(product.variants[0]);
 
   const tabs = [
-    { key: "detail" as const, label: "Detail" },
-    { key: "ingredients" as const, label: "Ingredients" },
-    { key: "howto" as const, label: "How To Use" },
+    { key: "detail" as const, label: "Deskripsi" },
+    { key: "ingredients" as const, label: "Komposisi" },
+    { key: "howto" as const, label: "Cara Pakai" },
   ];
 
   return (
@@ -58,20 +65,12 @@ export default function ProductDetail({ product, onClose, onToggleLike, isLiked 
             <div className="text-xs font-medium text-rose-500 mb-1">{product.category}</div>
             <h2 className="text-2xl font-bold text-slate-800 mb-2">{product.name}</h2>
 
-            <div className="flex items-center gap-2 mb-4">
-              <div className="flex gap-0.5">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className={`h-4 w-4 ${i < Math.floor(product.rating) ? "fill-amber-400 text-amber-400" : "text-slate-200"}`} />
-                ))}
-              </div>
-              <span className="text-sm text-slate-500">{product.rating} ({product.reviews} reviews)</span>
-            </div>
-
-            <div className="flex items-center gap-3 mb-6">
-              <span className="text-2xl font-bold text-rose-600">{formatPrice(product.price)}</span>
-              {product.originalPrice && (
-                <span className="text-sm text-slate-400 line-through">{formatPrice(product.originalPrice)}</span>
-              )}
+            <div className="mb-5 flex flex-wrap gap-2 text-[11px] text-slate-500">
+              {["Halal", "Natural", "Derm Tested"].map((item) => (
+                <span key={item} className="rounded-full bg-emerald-50 px-3 py-1 text-emerald-700">
+                  {item}
+                </span>
+              ))}
             </div>
 
             {/* Variant selector */}

@@ -63,7 +63,7 @@ const agendaPreview = [
 
 export default function BeritaPage() {
   return (
-    <div className="min-h-screen bg-[var(--gov-cream)] text-[var(--gov-text)]">
+    <div className="min-h-screen bg-(--gov-cream) text-(--gov-text)">
       <GovNav />
       <Breadcrumbs
         items={[
@@ -79,28 +79,28 @@ export default function BeritaPage() {
 
       <ContentWrap className="py-10 sm:py-12">
         <div className="card-base mb-10 grid overflow-hidden md:grid-cols-2">
-          <div className="flex items-center justify-center bg-gradient-to-br from-[var(--gov-navy)] to-[var(--gov-blue)] text-5xl text-white">
+          <div className="flex items-center justify-center bg-linear-to-br from-(--gov-navy) to-(--gov-blue) text-5xl text-white">
             🏛️
           </div>
           <div className="p-6 sm:p-8">
             <div className="mb-4 flex flex-wrap gap-2">
-              <span className="rounded-full bg-[rgba(26,86,219,0.1)] px-3 py-1 text-[11px] font-semibold text-[var(--gov-blue)]">
+              <span className="rounded-full bg-[rgba(26,86,219,0.1)] px-3 py-1 text-[11px] font-semibold text-(--gov-blue)">
                 Utama
               </span>
-              <span className="rounded-full bg-[rgba(201,151,43,0.12)] px-3 py-1 text-[11px] font-semibold text-[var(--gov-gold)]">
+              <span className="rounded-full bg-[rgba(201,151,43,0.12)] px-3 py-1 text-[11px] font-semibold text-(--gov-gold)">
                 Pemerintahan
               </span>
             </div>
-            <h2 className="font-display text-[22px] font-bold text-[var(--gov-navy)]">
+            <h2 className="font-display text-[22px] font-bold text-(--gov-navy)">
               Walikota Luncurkan Program 1.000 Taman Kota untuk Ruang Terbuka Hijau
             </h2>
-            <p className="mt-3 text-[13.5px] leading-7 text-[var(--gov-text-muted)]">
+            <p className="mt-3 text-[13.5px] leading-7 text-(--gov-text-muted)">
               Program ambisius Pemerintah Kota Contoh untuk menambah ruang terbuka hijau seluas 500 hektar dalam
               3 tahun demi kualitas udara yang lebih baik.
             </p>
-            <div className="mt-5 flex items-center justify-between text-[12px] text-[var(--gov-slate)]">
+            <div className="mt-5 flex items-center justify-between text-[12px] text-(--gov-slate)">
               <span>📅 27 Januari 2025 · 👁 4.821 Dibaca</span>
-              <Button asChild size="sm" className="h-8 rounded-md bg-[var(--gov-blue)] text-white">
+              <Button asChild size="sm" className="h-8 rounded-md bg-(--gov-blue) text-white">
                 <Link href="/site/government/berita">Baca Selengkapnya →</Link>
               </Button>
             </div>
@@ -108,7 +108,7 @@ export default function BeritaPage() {
         </div>
 
         <div className="filter-bar mb-6">
-          <span className="text-[12px] font-semibold text-[var(--gov-slate)]">Kategori:</span>
+          <span className="text-[12px] font-semibold text-(--gov-slate)">Kategori:</span>
           {[
             "Semua",
             "Pemerintahan",
@@ -131,20 +131,20 @@ export default function BeritaPage() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {beritaItems.map((item) => (
             <article key={item.title} className="card-base overflow-hidden">
-              <div className="flex h-[170px] items-center justify-center bg-gradient-to-br from-[var(--gov-navy)] to-[var(--gov-blue)] text-4xl text-white">
+              <div className="flex h-42.5 items-center justify-center bg-linear-to-br from-(--gov-navy) to-(--gov-blue) text-4xl text-white">
                 {item.icon}
               </div>
               <div className="p-5">
-                <div className="mb-2 flex items-center gap-2 text-[11.5px] text-[var(--gov-slate)]">
+                <div className="mb-2 flex items-center gap-2 text-[11.5px] text-(--gov-slate)">
                   <span className={`rounded-full px-3 py-1 text-[11px] font-semibold ${item.accent}`}>
                     {item.category}
                   </span>
                   <span>{item.date}</span>
                 </div>
-                <h3 className="text-[15px] font-bold text-[var(--gov-navy)]">{item.title}</h3>
-                <p className="mt-2 text-[12.5px] leading-6 text-[var(--gov-text-muted)]">{item.excerpt}</p>
+                <h3 className="text-[15px] font-bold text-(--gov-navy)">{item.title}</h3>
+                <p className="mt-2 text-[12.5px] leading-6 text-(--gov-text-muted)">{item.excerpt}</p>
                 <div className="mt-4 flex items-center justify-between">
-                  <div className="text-[12px] text-[var(--gov-slate)]">Dinas Kominfo</div>
+                  <div className="text-[12px] text-(--gov-slate)">Dinas Kominfo</div>
                   <Button asChild variant="ghost" size="sm" className="h-8">
                     <Link href="/site/government/berita">Baca →</Link>
                   </Button>
@@ -160,13 +160,13 @@ export default function BeritaPage() {
             <div className="space-y-3">
               {agendaPreview.map((item) => (
                 <div key={item.title} className="card-base flex items-start gap-4 px-4 py-4">
-                  <div className="flex h-14 w-12 flex-col items-center justify-center rounded-xl bg-[var(--gov-navy)] text-white">
+                  <div className="flex h-14 w-12 flex-col items-center justify-center rounded-xl bg-(--gov-navy) text-white">
                     <div className="font-display text-[20px] font-bold">{item.day}</div>
-                    <div className="text-[10px] font-semibold uppercase text-[var(--gov-gold-light)]">{item.month}</div>
+                    <div className="text-[10px] font-semibold uppercase text-(--gov-gold-light)">{item.month}</div>
                   </div>
                   <div className="flex-1">
-                    <div className="text-[14px] font-semibold text-[var(--gov-navy)]">{item.title}</div>
-                    <div className="mt-1 flex flex-wrap gap-3 text-[12px] text-[var(--gov-slate)]">
+                    <div className="text-[14px] font-semibold text-(--gov-navy)">{item.title}</div>
+                    <div className="mt-1 flex flex-wrap gap-3 text-[12px] text-(--gov-slate)">
                       <span>⏰ {item.time}</span>
                       <span>📍 {item.place}</span>
                       <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-semibold ${item.badgeClass}`}>
@@ -180,17 +180,17 @@ export default function BeritaPage() {
           </div>
           <div className="card-base flex flex-col justify-between p-6">
             <div>
-              <div className="text-[13px] font-semibold uppercase tracking-[0.08em] text-[var(--gov-gold)]">
+              <div className="text-[13px] font-semibold uppercase tracking-[0.08em] text-(--gov-gold)">
                 Kalender
               </div>
-              <div className="mt-2 font-display text-[22px] font-bold text-[var(--gov-navy)]">
+              <div className="mt-2 font-display text-[22px] font-bold text-(--gov-navy)">
                 Lihat agenda lengkap pemerintah kota.
               </div>
-              <p className="mt-2 text-[13.5px] text-[var(--gov-text-muted)]">
+              <p className="mt-2 text-[13.5px] text-(--gov-text-muted)">
                 Pantau jadwal kegiatan, rapat publik, dan acara warga melalui halaman agenda resmi.
               </p>
             </div>
-            <Button asChild className="mt-6 h-9 rounded-lg bg-[var(--gov-blue)] text-white">
+            <Button asChild className="mt-6 h-9 rounded-lg bg-(--gov-blue) text-white">
               <Link href="/site/government/agenda">Lihat Agenda →</Link>
             </Button>
           </div>
