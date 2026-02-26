@@ -9,11 +9,17 @@ type Crumb = { label: string; href?: string };
 export function ContentWrap({
   children,
   className,
+  id,
 }: {
   children: React.ReactNode;
   className?: string;
+  id?: string;
 }) {
-  return <div className={cn("mx-auto w-full max-w-[1280px] px-5 sm:px-8", className)}>{children}</div>;
+  return (
+    <div id={id} className={cn("mx-auto w-full max-w-[1280px] px-5 sm:px-8", className)}>
+      {children}
+    </div>
+  );
 }
 
 export function Breadcrumbs({ items }: { items: Crumb[] }) {

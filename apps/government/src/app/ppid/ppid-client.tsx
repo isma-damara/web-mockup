@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useMemo, useState } from "react";
 import { Button } from "@workspace/ui/ui/button";
@@ -203,94 +203,72 @@ export default function PpidClient({
           })}
         </div>
         <div className="mt-4 text-center text-[12px] text-[var(--gov-slate)]">
-          Menampilkan {filteredOpd.length} dari {opdList.length} OPD/SKPD
+          Menampilkan {filteredOpd.length} dari {opdList.length} OPD/SKPD.
         </div>
       </section>
 
       <section id="peraturan">
-        <SectionHeader label="🏢 Pemerintahan" title="Peraturan Daerah" />
-        <div className="card-base">
-          <div className="flex flex-wrap items-center gap-3 border-b border-[var(--gov-border)] px-4 py-4">
+        <SectionHeader label="📋 Regulasi" title="Peraturan Daerah" />
+        <div className="card-base mb-4 flex flex-wrap items-center justify-between gap-3 px-4 py-4">
+          <div className="flex flex-wrap items-center gap-3">
             <span className="text-[12px] font-semibold text-[var(--gov-slate)]">Jenis:</span>
-            {peraturanCategories.map((tag) => {
-              const active = tag === peraturanCategory;
-              return (
-                <button
-                  key={tag}
-                  type="button"
-                  onClick={() => setPeraturanCategory(tag)}
-                  className={`filter-chip ${active ? "filter-chip--active" : "filter-chip--idle"}`}
-                >
-                  {tag}
-                </button>
-              );
-            })}
-            <div className="ml-auto flex items-center gap-3">
-              <select className="h-8 rounded-md border border-[var(--gov-border)] bg-white px-2 text-[12px]">
-                <option>2025</option>
-                <option>2024</option>
-                <option>2023</option>
-              </select>
-              <Input
-                className="h-8 w-[200px]"
-                placeholder="🔍 Cari peraturan..."
-                value={peraturanSearch}
-                onChange={(event) => setPeraturanSearch(event.target.value)}
-              />
+            <div className="filter-bar border-0 p-0">
+              {peraturanCategories.map((tag) => {
+                const active = tag === peraturanCategory;
+                return (
+                  <button
+                    key={tag}
+                    type="button"
+                    onClick={() => setPeraturanCategory(tag)}
+                    className={`filter-chip ${active ? "filter-chip--active" : "filter-chip--idle"}`}
+                  >
+                    {tag}
+                  </button>
+                );
+              })}
             </div>
           </div>
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-[13px]">
-              <thead className="bg-[var(--gov-cream)] text-[12px] uppercase tracking-[0.06em] text-[var(--gov-slate)]">
-                <tr>
-                  <th className="px-4 py-3">No.</th>
-                  <th className="px-4 py-3">Nomor</th>
-                  <th className="px-4 py-3">Judul Peraturan</th>
-                  <th className="px-4 py-3">Jenis</th>
-                  <th className="px-4 py-3">Tahun</th>
-                  <th className="px-4 py-3">Aksi</th>
+          <Input
+            className="max-w-[220px]"
+            placeholder="🔍 Cari peraturan..."
+            value={peraturanSearch}
+            onChange={(event) => setPeraturanSearch(event.target.value)}
+          />
+        </div>
+        <div className="overflow-hidden rounded-2xl border border-[var(--gov-border)] bg-white">
+          <table className="w-full text-left text-[13px]">
+            <thead className="bg-[var(--gov-cream)] text-[11px] uppercase tracking-[0.06em] text-[var(--gov-slate)]">
+              <tr>
+                <th className="px-4 py-3">No.</th>
+                <th className="px-4 py-3">Nomor</th>
+                <th className="px-4 py-3">Judul Peraturan</th>
+                <th className="px-4 py-3">Jenis</th>
+                <th className="px-4 py-3">Tahun</th>
+                <th className="px-4 py-3">Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredPeraturan.map((row, index) => (
+                <tr key={row.number} className="border-b border-[var(--gov-border)] hover:bg-[rgba(26,86,219,0.04)]">
+                  <td className="px-4 py-3">{index + 1}</td>
+                  <td className="px-4 py-3">{row.number}</td>
+                  <td className="px-4 py-3 font-semibold text-[var(--gov-navy)]">{row.title}</td>
+                  <td className="px-4 py-3">{row.type}</td>
+                  <td className="px-4 py-3">{row.year}</td>
+                  <td className="px-4 py-3">
+                    <Button asChild size="sm" className="h-8 rounded-md bg-[var(--gov-blue)] text-white">
+                      <a href={row.downloadUrl}>📥 Unduh</a>
+                    </Button>
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-                {filteredPeraturan.map((row, index) => (
-                  <tr key={row.number} className="border-b border-[var(--gov-border)] hover:bg-[rgba(26,86,219,0.04)]">
-                    <td className="px-4 py-3">{index + 1}</td>
-                    <td className="px-4 py-3">{row.number}</td>
-                    <td className="px-4 py-3">{row.title}</td>
-                    <td className="px-4 py-3">{row.type}</td>
-                    <td className="px-4 py-3">{row.year}</td>
-                    <td className="px-4 py-3">
-                      <Button asChild size="sm" className="h-8 rounded-md bg-[var(--gov-blue)] text-white">
-                        <a href={row.downloadUrl}>📥 Unduh</a>
-                      </Button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <div className="flex items-center justify-between px-4 py-3 text-[12px] text-[var(--gov-slate)]">
-            <span>
-              Menampilkan {filteredPeraturan.length} dari {peraturanDocs.length} peraturan
-            </span>
-            <div className="flex gap-2">
-              <Button variant="outline" size="sm" className="h-8 rounded-md border-[var(--gov-border)]">
-                ← Sebelumnya
-              </Button>
-              <Button size="sm" className="h-8 rounded-md bg-[var(--gov-blue)] text-white">
-                Berikutnya →
-              </Button>
-            </div>
-          </div>
+              ))}
+            </tbody>
+          </table>
         </div>
       </section>
 
       <section id="apbd">
-        <SectionHeader
-          label="🏢 Pemerintahan"
-          title="Anggaran Pendapatan & Belanja Daerah"
-          description="Transparansi pengelolaan keuangan daerah Kota Contoh Tahun Anggaran 2025."
-        />
+        <SectionHeader label="💰 Transparansi" title="Ringkasan APBD 2025" />
         <div className="grid gap-4 md:grid-cols-3">
           {[
             { label: "Total Pendapatan", value: "Rp 3,85 T", sub: "📈 +8.2% dari 2024", color: "bg-[var(--gov-green)]" },
@@ -298,7 +276,7 @@ export default function PpidClient({
             { label: "Surplus/Defisit", value: "- Rp 72 M", sub: "⚖️ Defisit terencana", color: "bg-[var(--gov-blue)]" },
           ].map((card) => (
             <div key={card.label} className="relative overflow-hidden rounded-xl border border-[var(--gov-border)] bg-white p-5">
-              <div className={`absolute left-0 top-0 h-1 w-full ${card.color}`} />
+              <div className={`absolute left-0 right-0 top-0 h-[3px] ${card.color}`} />
               <div className="text-[12px] font-semibold uppercase tracking-[0.06em] text-[var(--gov-slate)]">{card.label}</div>
               <div className="font-display text-[22px] font-bold text-[var(--gov-navy)]">{card.value}</div>
               <div className="text-[12px] text-[var(--gov-text-muted)]">{card.sub}</div>
@@ -308,16 +286,18 @@ export default function PpidClient({
       </section>
 
       <section id="laporan">
-        <SectionHeader label="🏢 Pemerintahan" title="Laporan Kinerja" />
+        <SectionHeader label="📊 Akuntabilitas" title="Laporan Kinerja" />
         <div className="space-y-3">
           {laporanDocs.map((doc) => (
-            <div key={doc.name} className="card-base flex items-center gap-4 px-4 py-4">
-              <div className="flex h-14 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-[var(--gov-navy)] to-[var(--gov-blue)] text-white">
-                📊
-              </div>
-              <div className="flex-1">
-                <div className="text-[14px] font-bold text-[var(--gov-navy)]">{doc.name}</div>
-                <div className="text-[12px] text-[var(--gov-slate)]">{doc.meta}</div>
+            <div key={doc.name} className="card-base flex items-center justify-between px-4 py-4">
+              <div className="flex items-center gap-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[var(--gov-navy)] to-[var(--gov-blue)] text-xl text-white">
+                  📄
+                </div>
+                <div>
+                  <div className="text-[14px] font-bold text-[var(--gov-navy)]">{doc.name}</div>
+                  <div className="text-[12px] text-[var(--gov-slate)]">{doc.meta}</div>
+                </div>
               </div>
               <Button asChild size="sm" className="h-8 rounded-md bg-[var(--gov-blue)] text-white">
                 <a href={doc.downloadUrl}>📥 Unduh</a>

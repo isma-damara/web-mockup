@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useMemo, useState } from "react";
 import { Button } from "@workspace/ui/ui/button";
@@ -64,14 +64,16 @@ export default function PariwisataClient({ wisataSpots, pariwisataCategories }: 
                   {spot.type}
                 </span>
                 <div className="mt-2 text-[15px] font-bold text-[var(--gov-navy)]">{spot.name}</div>
-                <div className="text-[12px] text-[var(--gov-slate)]">📍 Kota Contoh</div>
-                <div className="mt-3 flex items-center justify-between">
-                  <span className="text-[13px] text-[var(--gov-slate)]">🎟 {spot.price}</span>
+                <div className="mt-1 flex items-center gap-2 text-[12px] text-[var(--gov-slate)]">
+                  <span>📍 Kota Contoh</span>
+                </div>
+                <div className="mt-4 flex items-center justify-between text-[13px] text-[var(--gov-slate)]">
+                  <span>🎟 {spot.price}</span>
                   <Button
                     asChild
                     variant="outline"
                     size="sm"
-                    className="border-[var(--gov-blue)] text-[var(--gov-blue)] hover:bg-[var(--gov-blue)] hover:text-white"
+                    className="h-8 border-[var(--gov-blue)] text-[var(--gov-blue)] hover:bg-[var(--gov-blue)] hover:text-white"
                   >
                     <a href={`/site/government/pariwisata#${id}`}>Detail</a>
                   </Button>
