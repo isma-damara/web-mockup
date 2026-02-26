@@ -8,6 +8,7 @@ import {
   MapPin, Phone, Mail, ChevronRight, Sparkles,
 } from "lucide-react";
 import { blogPosts, customerReviews } from "./EcomData";
+import { useSiteBase, withSiteBase } from "./useSiteBase";
 
 /* ---- COUNTDOWN TIMER ---- */
 export function CountdownTimer() {
@@ -165,6 +166,7 @@ export function ReviewSection() {
 
 /* ---- ENHANCED FOOTER ---- */
 export function EcomFooter() {
+  const siteBase = useSiteBase();
   return (
     <footer id="footer" className="bg-slate-900 text-slate-300 py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -212,7 +214,7 @@ export function EcomFooter() {
                   <li key={l}>
                     {col.title === "Bantuan" ? (
                       <Link
-                        href={
+                        href={withSiteBase(
                           l === "FAQ"
                             ? "/help/faq"
                             : l === "Track Order"
@@ -221,8 +223,9 @@ export function EcomFooter() {
                                 ? "/help/pengiriman"
                                 : l === "Kebijakan Retur"
                                   ? "/help/kebijakan-retur"
-                                  : "/help/hubungi-kami"
-                        }
+                                  : "/help/hubungi-kami",
+                          siteBase
+                        )}
                         className="text-sm text-slate-400 hover:text-emerald-400 transition-colors"
                       >
                         {l}

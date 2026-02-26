@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { products, fmt } from "../components/EcomData";
 import { useCart } from "../components/useCart";
+import { useSiteBase, withSiteBase } from "../components/useSiteBase";
 
 const paymentMethods = [
   { name: "Kartu Debit/Kredit", icon: CreditCard, detail: "Visa, Mastercard" },
@@ -21,6 +22,7 @@ const paymentMethods = [
 
 export default function CheckoutPage() {
   const router = useRouter();
+  const siteBase = useSiteBase();
   const { cart } = useCart();
   const [selectedPayment, setSelectedPayment] = useState<string | null>(null);
   const [name, setName] = useState("");
@@ -69,7 +71,7 @@ export default function CheckoutPage() {
       } catch {
         // ignore session storage errors
       }
-      router.push("/checkout/confirm");
+      router.push(withSiteBase("/checkout/confirm", siteBase));
     }
   };
 
@@ -81,7 +83,7 @@ export default function CheckoutPage() {
             <h1 className="text-2xl font-bold text-slate-800">Checkout</h1>
             <p className="mt-2 text-sm text-slate-500">Keranjangmu masih kosong.</p>
             <Link
-              href=".."
+              href={withSiteBase("/", siteBase)}
               className="mt-6 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-white px-4 py-2 text-sm font-semibold text-emerald-700 hover:bg-emerald-50"
             >
               <ArrowLeft className="h-4 w-4" />
@@ -99,7 +101,7 @@ export default function CheckoutPage() {
         <div className="flex items-center justify-between flex-wrap gap-4">
           <div className="flex items-center gap-3">
             <Link
-              href="../cart"
+              href={withSiteBase("/cart", siteBase)}
               className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-white px-4 py-2 text-sm font-semibold text-emerald-700 hover:bg-emerald-50"
             >
               <ArrowLeft className="h-4 w-4" />

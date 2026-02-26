@@ -7,6 +7,7 @@ import {
   SlidersHorizontal, Star, Trash2,
 } from "lucide-react";
 import { products, fmt } from "./EcomData";
+import { useSiteBase, withSiteBase } from "./useSiteBase";
 
 type CartItem = { id: number; qty: number; size: string };
 
@@ -44,6 +45,7 @@ export default function EcomNav({
   const [searchQuery, setSearchQuery] = useState("");
   const [wishlistOpen, setWishlistOpen] = useState(false);
   const dropTimer = useRef<NodeJS.Timeout | null>(null);
+  const siteBase = useSiteBase();
 
   useEffect(() => {
     setMounted(true);
@@ -102,7 +104,18 @@ export default function EcomNav({
                     {item.sub.map((s) => (
                       <a
                         key={s}
-                        href={s === "Track Order" ? "/help/track-order" : s === "Contact Us" ? "/help/hubungi-kami" : s === "Our Story" ? "#whyus" : s === "Lookbook" ? "#lookbook" : "#shop"}
+                        href={withSiteBase(
+                          s === "Track Order"
+                            ? "/help/track-order"
+                            : s === "Contact Us"
+                              ? "/help/hubungi-kami"
+                              : s === "Our Story"
+                                ? "#whyus"
+                                : s === "Lookbook"
+                                  ? "#lookbook"
+                                  : "#shop",
+                          siteBase
+                        )}
                         className="block rounded-lg px-3.5 py-2 text-sm text-slate-600 hover:bg-emerald-50 hover:text-emerald-600 transition-colors"
                         onClick={() => setOpenDrop(null)}
                       >
@@ -136,7 +149,7 @@ export default function EcomNav({
             )}
           </button>
           <Link
-            href="cart"
+            href={withSiteBase("/cart", siteBase)}
             className="relative rounded-full p-2 hover:bg-emerald-50 text-slate-600 transition-colors"
           >
             <ShoppingCart className="h-5 w-5" />

@@ -1,7 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { Star, Sparkles, MapPin, Phone, Mail, Instagram, Twitter, Facebook, Youtube } from "lucide-react";
 import { blogPosts } from "./CatalogData";
+import { useSiteBase, withSiteBase } from "./useSiteBase";
 
 /* ---- BRAND STORY ---- */
 export function BrandStory() {
@@ -159,6 +161,7 @@ export function InstagramFeed() {
 
 /* ---- ENHANCED FOOTER ---- */
 export function CatalogFooter() {
+  const siteBase = useSiteBase();
   return (
     <footer id="footer" className="bg-slate-900 text-slate-300 py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -204,7 +207,41 @@ export function CatalogFooter() {
               <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-white">{col.title}</h4>
               <ul className="space-y-2">
                 {col.links.map((l) => (
-                  <li key={l}><span className="text-sm text-slate-400 hover:text-rose-400 cursor-pointer transition-colors">{l}</span></li>
+                  <li key={l}>
+                    {col.title === "Produk" ? (
+                      <Link href={withSiteBase("/products", siteBase)} className="text-sm text-slate-400 hover:text-rose-400 transition-colors">
+                        {l}
+                      </Link>
+                    ) : col.title === "Info" ? (
+                      <Link
+                        href={withSiteBase(
+                          l === "About Brand" ? "/brand" : l === "Before & After" ? "/before-after" : "/blog",
+                          siteBase
+                        )}
+                        className="text-sm text-slate-400 hover:text-rose-400 transition-colors"
+                      >
+                        {l}
+                      </Link>
+                    ) : (
+                      <Link
+                        href={withSiteBase(
+                          l === "FAQ"
+                            ? "/help/faq"
+                            : l === "Hubungi Kami"
+                              ? "/help/hubungi-kami"
+                              : l === "Pengiriman"
+                                ? "/help/pengiriman"
+                                : l === "Kebijakan Retur"
+                                  ? "/help/kebijakan-retur"
+                                  : "/help",
+                          siteBase
+                        )}
+                        className="text-sm text-slate-400 hover:text-rose-400 transition-colors"
+                      >
+                        {l}
+                      </Link>
+                    )}
+                  </li>
                 ))}
               </ul>
             </div>
