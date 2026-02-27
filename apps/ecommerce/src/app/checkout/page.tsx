@@ -13,6 +13,7 @@ import {
 import { products, fmt } from "../components/EcomData";
 import { useCart } from "../components/useCart";
 import { useSiteBase, withSiteBase } from "../components/useSiteBase";
+import { createCheckoutSnapshot } from "../components/mockOrderStore";
 
 const paymentMethods = [
   { name: "Kartu Debit/Kredit", icon: CreditCard, detail: "Visa, Mastercard" },
@@ -60,13 +61,13 @@ export default function CheckoutPage() {
       try {
         window.sessionStorage.setItem(
           "ecom_checkout",
-          JSON.stringify({
+          JSON.stringify(createCheckoutSnapshot({
             name,
             phone,
             address,
-            payment: selectedPayment,
+            payment: selectedPayment ?? "",
             wallet,
-          }),
+          })),
         );
       } catch {
         // ignore session storage errors

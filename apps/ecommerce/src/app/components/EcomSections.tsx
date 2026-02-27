@@ -7,7 +7,7 @@ import {
   CreditCard, Smartphone, QrCode, Truck, Shield, Package, Tag,
   MapPin, Phone, Mail, ChevronRight, Sparkles,
 } from "lucide-react";
-import { blogPosts, customerReviews } from "./EcomData";
+import { customerReviews } from "./EcomData";
 import { useSiteBase, withSiteBase } from "./useSiteBase";
 
 /* ---- COUNTDOWN TIMER ---- */
@@ -47,12 +47,36 @@ export function CountdownTimer() {
 /* ---- LOOKBOOK / STYLE INSPIRATION ---- */
 export function Lookbook() {
   const looks = [
-    { title: "Street Casual", gradient: "from-emerald-300 to-teal-400", items: "Denim Jacket + Cargo Pants + Sneakers" },
-    { title: "Office Chic", gradient: "from-rose-300 to-pink-400", items: "Blazer + Silk Dress + Heels" },
-    { title: "Weekend Vibes", gradient: "from-emerald-300 to-teal-400", items: "Linen Shirt + Canvas Bag + Sunglasses" },
-    { title: "Night Out", gradient: "from-violet-300 to-purple-400", items: "Platform Boots + Crossbody Bag" },
-    { title: "Athleisure", gradient: "from-blue-300 to-indigo-400", items: "Sneakers + Cargo Pants + Tote Bag" },
-    { title: "Minimalist", gradient: "from-slate-300 to-zinc-400", items: "Classic Sneakers + Oversized Blazer" },
+    {
+      title: "Street Casual",
+      items: "Denim Jacket + Cargo Pants + Sneakers",
+      image: "/assets/inspiration/streetcasual.jpg",
+      layout: "md:col-span-3",
+    },
+    {
+      title: "Office Chic",
+      items: "Blazer + Silk Dress + Heels",
+      image: "/assets/inspiration/officechic.jpg",
+      layout: "md:col-span-3",
+    },
+    {
+      title: "Weekend Vibes",
+      items: "Linen Shirt + Canvas Bag + Sunglasses",
+      image: "/assets/inspiration/weekendvibes.jpg",
+      layout: "md:col-span-2",
+    },
+    {
+      title: "Night Out",
+      items: "Platform Boots + Crossbody Bag",
+      image: "/assets/inspiration/nightput.jpg",
+      layout: "md:col-span-2",
+    },
+    {
+      title: "Athleisure",
+      items: "Sneakers + Cargo Pants + Tote Bag",
+      image: "/assets/inspiration/Athleisure.jpg",
+      layout: "md:col-span-2",
+    },
   ];
   return (
     <section id="lookbook" className="py-20 sm:py-24 bg-white">
@@ -66,51 +90,21 @@ export function Lookbook() {
           </h2>
           <p className="mt-2 text-slate-500 max-w-lg mx-auto leading-relaxed">Temukan kombinasi outfit yang pas untuk setiap momen.</p>
         </div>
-        <div className="grid gap-4 grid-cols-2 md:grid-cols-3">
-          {looks.map((look, i) => (
+        <div className="grid gap-4 md:grid-cols-6">
+          {looks.map((look) => (
             <div
               key={look.title}
-              className={`group relative rounded-2xl bg-gradient-to-br ${look.gradient} overflow-hidden cursor-pointer ${i === 0 ? "md:row-span-2 h-64 md:h-auto" : "h-52"}`}
+              className={`group relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm ${look.layout} h-56`}
             >
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-3xl font-bold text-white/20">{look.title.split(" ")[0]}</span>
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/50 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                <div className="text-white font-bold text-sm">{look.title}</div>
-                <div className="text-white/70 text-xs mt-0.5">{look.items}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---- BLOG / STYLE GUIDE ---- */
-export function BlogSection() {
-  return (
-    <section id="blog" className="py-20 sm:py-24 bg-emerald-50/30">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-2xl font-bold text-slate-800 sm:text-3xl">
-            Blog & <span className="text-emerald-600">Style Guide</span>
-          </h2>
-          <p className="mt-2 text-slate-500 leading-relaxed">Tips fashion, panduan gaya, dan inspirasi outfit terbaru.</p>
-        </div>
-        <div className="grid gap-6 sm:grid-cols-3">
-          {blogPosts.map((post) => (
-            <div key={post.title} className="group rounded-2xl border border-slate-100 bg-white overflow-hidden hover:shadow-xl hover:shadow-emerald-100 hover:-translate-y-1 transition-all duration-300">
-              <div className={`h-44 bg-gradient-to-br ${post.gradient} flex items-center justify-center relative overflow-hidden`}>
-                <div className="absolute inset-0 opacity-20"><div className="absolute top-4 right-4 h-16 w-16 rounded-full border-2 border-white/30" /></div>
-                <span className="text-white/30 text-3xl font-bold">{post.category.split(" ")[0]}</span>
-              </div>
-              <div className="p-5">
-                <span className="text-xs font-medium text-emerald-500">{post.category}</span>
-                <h3 className="mt-1 text-sm font-semibold text-slate-800 group-hover:text-emerald-600 transition-colors">{post.title}</h3>
-                <p className="mt-2 text-xs text-slate-500 leading-relaxed">{post.excerpt}</p>
-                <div className="mt-3 text-xs text-slate-400">{post.date}</div>
+              <img
+                src={look.image}
+                alt={look.title}
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
+                <div className="text-white font-bold text-sm sm:text-base">{look.title}</div>
+                <div className="text-white/80 text-xs sm:text-sm mt-1">{look.items}</div>
               </div>
             </div>
           ))}
@@ -167,6 +161,12 @@ export function ReviewSection() {
 /* ---- ENHANCED FOOTER ---- */
 export function EcomFooter() {
   const siteBase = useSiteBase();
+  const socialLinks = [
+    { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
+    { icon: Twitter, href: "https://x.com", label: "X" },
+    { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
+    { icon: Youtube, href: "https://youtube.com", label: "YouTube" },
+  ];
   return (
     <footer id="footer" className="bg-slate-900 text-slate-300 py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -182,22 +182,29 @@ export function EcomFooter() {
               Koleksi fashion yang nyaman dipakai, gampang dipadukan, dan selalu up to date.
             </p>
             <div className="space-y-2 mb-5">
-              <div className="flex items-center gap-2 text-sm text-slate-400">
+              <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-emerald-400 shrink-0" />
                 <span>Jl. Sudirman No. 88, Jakarta Pusat</span>
               </div>
-              <div className="flex items-center gap-2 text-sm text-slate-400">
+              <div className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-emerald-400 shrink-0" />
                 <span>+62 21 5555 8888</span>
               </div>
-              <div className="flex items-center gap-2 text-sm text-slate-400">
+              <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-emerald-400 shrink-0" />
                 <span>hello@urbanstyle.id</span>
               </div>
             </div>
             <div className="flex gap-3">
-              {[Instagram, Twitter, Facebook, Youtube].map((Icon, i) => (
-                <a key={i} href="#" className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-800 text-slate-400 hover:bg-emerald-500 hover:text-white transition-all">
+              {socialLinks.map(({ icon: Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={label}
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-800 text-slate-400 hover:bg-emerald-500 hover:text-white transition-all"
+                >
                   <Icon className="h-4 w-4" />
                 </a>
               ))}
@@ -231,7 +238,12 @@ export function EcomFooter() {
                         {l}
                       </Link>
                     ) : (
-                      <span className="text-sm text-slate-400 hover:text-emerald-400 cursor-pointer transition-colors">{l}</span>
+                      <Link
+                        href={withSiteBase("/#shop", siteBase)}
+                        className="text-sm text-slate-400 hover:text-emerald-400 transition-colors"
+                      >
+                        {l}
+                      </Link>
                     )}
                   </li>
                 ))}
