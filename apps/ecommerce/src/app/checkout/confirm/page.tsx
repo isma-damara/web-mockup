@@ -9,22 +9,15 @@ import {
   QrCode,
   Smartphone,
 } from "lucide-react";
-import { products, fmt } from "../../components/EcomData";
+import { products, fmt, productImageById } from "../../components/EcomData";
 import { useCart } from "../../components/useCart";
-
-type CheckoutData = {
-  name: string;
-  phone: string;
-  address: string;
-  payment: string;
-  wallet?: string | null;
-};
-
-function makePreviewImage(label: string) {
-  const safe = encodeURIComponent(label.split(" ").slice(0, 2).join(" "));
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d1fae5"/><stop offset="1" stop-color="#99f6e4"/></linearGradient></defs><rect width="100%" height="100%" rx="28" fill="url(#g)"/><text x="50%" y="52%" text-anchor="middle" font-family="system-ui" font-size="24" font-weight="700" fill="rgba(15,118,110,0.35)">${safe}</text></svg>`;
-  return `data:image/svg+xml;utf8,${svg}`;
-}
+import {
+  buildOrderFromCheckout,
+  findMockOrder,
+  formatOrderDate,
+  type CheckoutSnapshot,
+  saveMockOrder,
+} from "../../components/mockOrderStore";
 
 function paymentIcon(payment?: string) {
   if (payment === "Kartu Debit/Kredit") return CreditCard;
@@ -36,15 +29,17 @@ function paymentIcon(payment?: string) {
 export default function CheckoutConfirmPage() {
   const { cart, clearCart } = useCart();
   const [mounted, setMounted] = useState(false);
-  const [checkoutData, setCheckoutData] = useState<CheckoutData | null>(null);
+  const [checkoutData, setCheckoutData] = useState<CheckoutSnapshot | null>(null);
   const [done, setDone] = useState(false);
+  const [completedOrderNo, setCompletedOrderNo] = useState<string | null>(null);
+  const [completedPhone, setCompletedPhone] = useState<string | null>(null);
 
   useEffect(() => {
     setMounted(true);
     try {
       const raw = window.sessionStorage.getItem("ecom_checkout");
       if (raw) {
-        setCheckoutData(JSON.parse(raw) as CheckoutData);
+        setCheckoutData(JSON.parse(raw) as CheckoutSnapshot);
       }
     } catch {
       // ignore
@@ -62,6 +57,16 @@ export default function CheckoutConfirmPage() {
   const displayTotalPrice = mounted ? totalPrice : 0;
 
   const confirmOrder = () => {
+    if (!checkoutData || displayCart.length === 0) return;
+    const order = buildOrderFromCheckout(checkoutData, displayCart);
+    saveMockOrder(order);
+    setCompletedOrderNo(order.orderNo);
+    setCompletedPhone(order.phone);
+    const latest = findMockOrder(order.orderNo, order.phone);
+    if (latest) {
+      setCompletedOrderNo(latest.orderNo);
+      setCompletedPhone(latest.phone);
+    }
     clearCart();
     try {
       window.sessionStorage.removeItem("ecom_checkout");
@@ -98,6 +103,10 @@ export default function CheckoutConfirmPage() {
   }
 
   if (done) {
+    const trackHref = completedOrderNo && completedPhone
+      ? `../../help/track-order?orderNo=${encodeURIComponent(completedOrderNo)}&phone=${encodeURIComponent(completedPhone)}`
+      : "../../help/track-order";
+
     return (
       <div className="min-h-screen bg-emerald-50/30">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-12">
@@ -109,9 +118,22 @@ export default function CheckoutConfirmPage() {
             <p className="mt-2 text-sm text-slate-500">
               Terima kasih! Pesananmu sedang kami proses.
             </p>
+            {completedOrderNo && (
+              <div className="mt-4 inline-flex rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1.5 text-xs font-semibold text-emerald-700">
+                No. Pesanan: {completedOrderNo}
+              </div>
+            )}
+            <div className="mt-4">
+              <Link
+                href={trackHref}
+                className="inline-flex items-center gap-2 rounded-full border border-emerald-300 bg-white px-5 py-2 text-sm font-semibold text-emerald-700 hover:bg-emerald-50"
+              >
+                Lacak Pesanan
+              </Link>
+            </div>
             <Link
               href="../.."
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-2 text-sm font-semibold text-white hover:bg-emerald-700"
+              className="mt-3 inline-flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-2 text-sm font-semibold text-white hover:bg-emerald-700"
             >
               Kembali Belanja
             </Link>
@@ -157,7 +179,7 @@ export default function CheckoutConfirmPage() {
                     className="flex flex-wrap items-center gap-4 rounded-2xl border border-slate-100 p-4"
                   >
                     <img
-                      src={makePreviewImage(p.name)}
+                      src={productImageById(productId)}
                       alt={p.name}
                       className="h-16 w-16 rounded-xl object-cover border border-emerald-100 bg-white"
                     />
@@ -177,6 +199,20 @@ export default function CheckoutConfirmPage() {
           </section>
 
           <aside className="space-y-6">
+            {checkoutData && (
+              <div className="rounded-3xl border border-emerald-100 bg-white p-6 shadow-sm">
+                <h2 className="text-lg font-semibold text-slate-800">Nomor Pesanan</h2>
+                <div className="mt-3 text-sm">
+                  <div className="inline-flex rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
+                    {checkoutData.orderNo}
+                  </div>
+                  <div className="mt-2 text-xs text-slate-500">
+                    Dibuat pada {formatOrderDate(checkoutData.createdAt)}
+                  </div>
+                </div>
+              </div>
+            )}
+
             <div className="rounded-3xl border border-emerald-100 bg-white p-6 shadow-sm">
               <h2 className="text-lg font-semibold text-slate-800">Data Pengiriman</h2>
               {checkoutData ? (

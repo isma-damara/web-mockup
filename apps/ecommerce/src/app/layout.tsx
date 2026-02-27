@@ -2,24 +2,39 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "NexaTech ? Solusi Teknologi Masa Depan",
+  metadataBase: new URL("https://urbanstyle.id"),
+  title: "UrbanStyle | Toko Fashion Online",
   description:
-    "NexaTech adalah perusahaan teknologi inovatif yang menyediakan solusi digital terdepan. Web Development, Mobile App, Cloud Computing, AI & Machine Learning.",
+    "UrbanStyle adalah mockup toko fashion online dengan pengalaman belanja lengkap: katalog produk, keranjang, checkout, dan pelacakan pesanan.",
   keywords: [
-    "NexaTech",
-    "teknologi",
-    "software development",
-    "web development",
-    "mobile app",
-    "cloud computing",
-    "AI",
-    "machine learning",
+    "UrbanStyle",
+    "fashion online",
+    "toko online",
+    "ecommerce",
+    "belanja pakaian",
+    "checkout",
+    "track order",
   ],
   openGraph: {
-    title: "NexaTech ? Solusi Teknologi Masa Depan",
+    title: "UrbanStyle | Toko Fashion Online",
     description:
-      "Perusahaan teknologi inovatif yang menghadirkan solusi digital terdepan untuk bisnis Anda.",
+      "Belanja fashion dengan pengalaman e-commerce modern: produk, keranjang, checkout, dan tracking.",
     type: "website",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "UrbanStyle - Toko Fashion Online",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "UrbanStyle | Toko Fashion Online",
+    description:
+      "Belanja fashion dengan pengalaman e-commerce modern: produk, keranjang, checkout, dan tracking.",
+    images: ["/opengraph-image"],
   },
 };
 

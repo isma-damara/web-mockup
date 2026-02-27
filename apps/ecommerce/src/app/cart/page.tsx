@@ -10,17 +10,13 @@ import {
   ShieldCheck,
   Star,
 } from "lucide-react";
-import { products, fmt } from "../components/EcomData";
+import { products, fmt, productImageById } from "../components/EcomData";
 import { useCart } from "../components/useCart";
-
-function makePreviewImage(label: string) {
-  const safe = encodeURIComponent(label.split(" ").slice(0, 2).join(" "));
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d1fae5"/><stop offset="1" stop-color="#99f6e4"/></linearGradient></defs><rect width="100%" height="100%" rx="28" fill="url(#g)"/><text x="50%" y="52%" text-anchor="middle" font-family="system-ui" font-size="24" font-weight="700" fill="rgba(15,118,110,0.35)">${safe}</text></svg>`;
-  return `data:image/svg+xml;utf8,${svg}`;
-}
+import { useSiteBase, withSiteBase } from "../components/useSiteBase";
 
 export default function CartPage() {
   const { cart, updateQty, removeFromCart, updateSize } = useCart();
+  const siteBase = useSiteBase();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -45,7 +41,7 @@ export default function CartPage() {
         <div className="flex items-center justify-between flex-wrap gap-4">
           <div className="flex items-center gap-3">
             <Link
-              href=".."
+              href={withSiteBase("/#shop", siteBase)}
               className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-white px-4 py-2 text-sm font-semibold text-emerald-700 hover:bg-emerald-50"
             >
               <ArrowLeft className="h-4 w-4" />
@@ -81,7 +77,7 @@ export default function CartPage() {
                       className="flex flex-wrap items-start gap-4 rounded-2xl border border-slate-100 p-4"
                     >
                       <img
-                        src={makePreviewImage(p.name)}
+                        src={productImageById(productId)}
                         alt={p.name}
                         className="h-20 w-20 rounded-xl object-cover border border-emerald-100 bg-white"
                       />
@@ -186,7 +182,7 @@ export default function CartPage() {
                 <span className="text-xl font-bold text-emerald-600">{fmt(displayTotalPrice)}</span>
               </div>
               <Link
-                href="checkout"
+                href={withSiteBase("/checkout", siteBase)}
                 className="mt-5 block w-full rounded-full bg-emerald-600 py-3 text-center text-sm font-semibold text-white hover:bg-emerald-700"
               >
                 Lanjut ke Pembayaran
